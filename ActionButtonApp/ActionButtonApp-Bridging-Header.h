@@ -15,6 +15,7 @@
 #import <Bolts/Bolts.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <FormatterKit/TTTTimeIntervalFormatter.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #ifndef MHImageTabBar_Bridging_Header_h
 #define MHImageTabBar_Bridging_Header_h

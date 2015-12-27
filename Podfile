@@ -26,7 +26,9 @@ use_frameworks!
   #pod 'ParseUI', '1.1.4'
   pod 'MBProgressHUD'
   pod 'FormatterKit'
-  
+  pod 'SDWebImage'
+  pod 'RealmSwift'
+    
   pod 'UIImageAFAdditions', :git => 'https://github.com/teklabs/UIImageAFAdditions.git'
 
   pod 'Synchronized'

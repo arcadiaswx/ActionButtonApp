@@ -10,6 +10,8 @@ import UIKit
 import ActionButton
 
 class Main1ViewController: UIViewController {
+    var pageMenu : CAPSPageMenu?
+    
     @IBOutlet weak var tableView: UITableView!
     
         let items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
@@ -20,7 +22,16 @@ class Main1ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        var controllerArray : [UIViewController] = []
+        self.navigationItem.title = "ActionButtonApp"
+        
+        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.navigationBarTitleTextColor()]
+        self.navigationController?.navigationBar.barTintColor = UIColor.navigationBarBackgroundColor()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = false
+        
         // Do any additional setup after loading the view.
         let oneImage = UIImage(named: "one.png")!
         let twoImage = UIImage(named: "two.png")!

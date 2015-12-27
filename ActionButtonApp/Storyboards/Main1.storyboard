@@ -42,7 +42,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="QES-Xf-eiU" secondAttribute="centerY" id="Wiy-lD-q2a"/>
                             <constraint firstAttribute="centerX" secondItem="QES-Xf-eiU" secondAttribute="centerX" id="jOO-Qw-Rxm"/>
@@ -50,11 +50,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="X5Z-hi-BVg">
                         <barButtonItem key="leftBarButtonItem" title="Notifs" id="btr-8K-OUO">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="4Ib-0N-vJl" kind="presentation" id="Iie-fi-8wF"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="profile-icon" id="jhU-pf-S91">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="0IY-7m-KXf" kind="show" id="Wa6-tp-Urs"/>
                             </connections>
@@ -97,6 +99,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="7Xc-ql-sRS" kind="show" identifier="showNotificationsDetailView" id="buP-QM-NHW"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -557,10 +562,10 @@
             </objects>
             <point key="canvasLocation" x="3524" y="396"/>
         </scene>
-        <!--View Controller-->
+        <!--Notifications Detail View Controller-->
         <scene sceneID="7FX-79-vHN">
             <objects>
-                <viewController id="7Xc-ql-sRS" sceneMemberID="viewController">
+                <viewController id="7Xc-ql-sRS" customClass="NotificationsDetailViewController" customModule="ActionButtonApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bVG-rR-wFX"/>
                         <viewControllerLayoutGuide type="bottom" id="1o2-Nw-b0e"/>

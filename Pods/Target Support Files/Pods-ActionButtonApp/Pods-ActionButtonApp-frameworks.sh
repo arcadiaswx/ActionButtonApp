@@ -98,6 +98,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-ActionButtonApp/ParseTwitterUtils.framework"
   install_framework "Pods-ActionButtonApp/ParseUI.framework"
   install_framework "Pods-ActionButtonApp/PathMenu.framework"
+  install_framework "Pods-ActionButtonApp/Realm.framework"
+  install_framework "Pods-ActionButtonApp/RealmSwift.framework"
+  install_framework "Pods-ActionButtonApp/SDWebImage.framework"
   install_framework "Pods-ActionButtonApp/Synchronized.framework"
   install_framework "Pods-ActionButtonApp/UIImageAFAdditions.framework"
 fi
@@ -116,6 +119,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-ActionButtonApp/ParseTwitterUtils.framework"
   install_framework "Pods-ActionButtonApp/ParseUI.framework"
   install_framework "Pods-ActionButtonApp/PathMenu.framework"
+  install_framework "Pods-ActionButtonApp/Realm.framework"
+  install_framework "Pods-ActionButtonApp/RealmSwift.framework"
+  install_framework "Pods-ActionButtonApp/SDWebImage.framework"
   install_framework "Pods-ActionButtonApp/Synchronized.framework"
   install_framework "Pods-ActionButtonApp/UIImageAFAdditions.framework"
 fi
