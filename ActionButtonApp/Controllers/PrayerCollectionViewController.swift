@@ -70,22 +70,18 @@ class PrayerCollectionViewController: UICollectionViewController{
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier_Shot, forIndexPath: indexPath) as! ShotCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier_Shot, forIndexPath: indexPath) as! PrayerCollectionViewCell
         
         let prayer = prayers[indexPath.row]
         
-        cell.imageView.sd_setImageWithURL(NSURL(string: prayer.imageUrl)!)
-//        cell.imageView.layer.shadowColor = UIColor.blackColor().CGColor
-//        cell.imageView.layer.shadowOffset = CGSize(width: 0, height: 10)
-//        cell.imageView.layer.shadowOpacity = 0.8
-//        cell.imageView.layer.shadowRadius = 5
+        //cell.imageView.sd_setImageWithURL(NSURL(string: prayer.imageUrl)!)
         
-        cell.designerIcon.sd_setImageWithURL(NSURL(string: prayer.avatarUrl)!)
-        cell.designerIcon.layer.cornerRadius = cell.designerIcon.bounds.width / 2
-        cell.designerIcon.layer.masksToBounds = true
+        cell.userIcon.sd_setImageWithURL(NSURL(string: prayer.avatarUrl)!)
+        cell.userIcon.layer.cornerRadius = cell.userIcon.bounds.width / 2
+        cell.userIcon.layer.masksToBounds = true
         
-        cell.shotName.text = prayer.shotName
-        cell.designerName.text = prayer.designerName
+        cell.prayerTitle.text = prayer.prayerTitle
+        cell.userName.text = prayer.userName
         cell.viewLabel.text = String(prayer.shotCount)
         
         
@@ -101,37 +97,7 @@ class PrayerCollectionViewController: UICollectionViewController{
                 }
             })
         }
-        
-//        cell.imageView.bounds = CGRectMake(0, 0, cellWidth, cellHeight)
-//        cell.imageView.frame = cell.imageView.bounds
-//        cell.imageView.contentMode = UIViewContentMode.ScaleAspectFill
-        
-        
-//        cell.animatedImageView.bounds = CGRectMake(0, 0, cellWidth, cellHeight)
-//        cell.animatedImageView.frame = cell.animatedImageView.bounds
-//        cell.animatedImageView.contentMode = UIViewContentMode.ScaleAspectFill
-        
-//        cell.contentView.backgroundColor = UIColor.yellowColor()
-        
-//        let imageLoadQueue = dispatch_queue_create("imageLoadQueue", nil)
-//        
-//        SDWebImageDownloader.sharedDownloader().downloadImageWithURL(
-//            NSURL(string: shot.imageUrl),
-//            options: SDWebImageDownloaderOptions.UseNSURLCache,
-//            progress: nil,
-//            completed: { (image: UIImage!, data: NSData!, error: NSError!, finished: Bool) -> Void in
-//                if finished {
-//                    dispatch_async(imageLoadQueue, {
-//                        let animatedImage = FLAnimatedImage(animatedGIFData: data)
-//                        if let animatedImage = animatedImage {
-//                            dispatch_async(dispatch_get_main_queue(), {
-//                                cell.animatedImageView.animatedImage = FLAnimatedImage(GIFData: data)
-//                            })
-//                        }
-//                    })
-//                }
-//                
-//        })
+
         
         //        DribbleObjectHandler.asyncLoadShotImage(shot, imageView: cell.imageView)
         
@@ -164,8 +130,8 @@ class PrayerCollectionViewController: UICollectionViewController{
         vc.modalTransitionStyle = .CrossDissolve
 //        vc.parentNavigationController = parentNavigationController
         vc.pageUrl = prayer.htmlUrl
-        vc.shotName = prayer.shotName
-        vc.designerName = prayer.designerName
+        vc.shotName = prayer.prayerTitle
+        vc.designerName = prayer.userName
         
         let downloadQueue = dispatch_queue_create("com.teklabsco.processdownload", nil)
         

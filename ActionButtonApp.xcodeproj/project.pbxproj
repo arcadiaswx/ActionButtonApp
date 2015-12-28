@@ -10,12 +10,11 @@
 		597962593030551F9EE8E0EA /* Pods_ActionButtonApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457885DD1EB4834F12BA079D /* Pods_ActionButtonApp.framework */; };
 		A61065BA1C271751006F836F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065B91C271751006F836F /* AppDelegate.swift */; };
 		A61065BC1C271751006F836F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065BB1C271751006F836F /* ViewController.swift */; };
-		A61065BF1C271751006F836F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61065BD1C271751006F836F /* Main.storyboard */; };
 		A61065C11C271751006F836F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A61065C01C271751006F836F /* Assets.xcassets */; };
 		A61065C41C271751006F836F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61065C21C271751006F836F /* LaunchScreen.storyboard */; };
 		A61065CC1C27176A006F836F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A61065CB1C27176A006F836F /* Podfile */; };
-		A61065DB1C29BB82006F836F /* Main1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61065DA1C29BB82006F836F /* Main1.storyboard */; };
-		A61065DD1C29BBC6006F836F /* Main1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065DC1C29BBC6006F836F /* Main1ViewController.swift */; };
+		A61065DB1C29BB82006F836F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61065DA1C29BB82006F836F /* Main.storyboard */; };
+		A61065DD1C29BBC6006F836F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065DC1C29BBC6006F836F /* BaseViewController.swift */; };
 		A61065DF1C29BC61006F836F /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065DE1C29BC61006F836F /* AccountViewController.swift */; };
 		A61065E21C29BCB5006F836F /* IOCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065E11C29BCB5006F836F /* IOCell.swift */; };
 		A61065E41C29BD4D006F836F /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065E31C29BD4D006F836F /* ProfileHeader.swift */; };
@@ -27,7 +26,6 @@
 		A61065F01C29BE38006F836F /* ComplexConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065EF1C29BE38006F836F /* ComplexConstants.swift */; };
 		A61065F21C29BE4E006F836F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065F11C29BE4E006F836F /* Extensions.swift */; };
 		A61065F41C29BE69006F836F /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065F31C29BE69006F836F /* NotificationHelper.swift */; };
-		A61065F61C29BEFD006F836F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065F51C29BEFD006F836F /* TabBarViewController.swift */; };
 		A61065F81C29C01B006F836F /* AddPrayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065F71C29C01B006F836F /* AddPrayerViewController.swift */; };
 		A61065FA1C29C11E006F836F /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065F91C29C11E006F836F /* NotificationsViewController.swift */; };
 		A61065FC1C29CE85006F836F /* ShotCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A61065FB1C29CE85006F836F /* ShotCollectionViewController.xib */; };
@@ -56,6 +54,7 @@
 		A6CD43D51C29FB8300D43160 /* NotificationObjectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43D41C29FB8300D43160 /* NotificationObjectHandler.swift */; };
 		A6CD43D71C2B047000D43160 /* PrayerNotificationBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43D61C2B047000D43160 /* PrayerNotificationBase.swift */; };
 		A6CD43D91C2C541A00D43160 /* PrayerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43D81C2C541A00D43160 /* PrayerBase.swift */; };
+		A6CD43DB1C304E8D00D43160 /* PrayerCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6CD43DA1C304E8D00D43160 /* PrayerCollectionViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,14 +63,13 @@
 		A61065B61C271751006F836F /* ActionButtonApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActionButtonApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61065B91C271751006F836F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A61065BB1C271751006F836F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A61065BE1C271751006F836F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A61065C01C271751006F836F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A61065C31C271751006F836F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A61065C51C271751006F836F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A61065CB1C27176A006F836F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A61065CD1C271925006F836F /* ActionButtonApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ActionButtonApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		A61065DA1C29BB82006F836F /* Main1.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main1.storyboard; sourceTree = "<group>"; };
-		A61065DC1C29BBC6006F836F /* Main1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main1ViewController.swift; sourceTree = "<group>"; };
+		A61065DA1C29BB82006F836F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A61065DC1C29BBC6006F836F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A61065DE1C29BC61006F836F /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		A61065E11C29BCB5006F836F /* IOCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOCell.swift; sourceTree = "<group>"; };
 		A61065E31C29BD4D006F836F /* ProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
@@ -83,7 +81,6 @@
 		A61065EF1C29BE38006F836F /* ComplexConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplexConstants.swift; sourceTree = "<group>"; };
 		A61065F11C29BE4E006F836F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A61065F31C29BE69006F836F /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
-		A61065F51C29BEFD006F836F /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		A61065F71C29C01B006F836F /* AddPrayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPrayerViewController.swift; sourceTree = "<group>"; };
 		A61065F91C29C11E006F836F /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		A61065FB1C29CE85006F836F /* ShotCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShotCollectionViewController.xib; sourceTree = "<group>"; };
@@ -112,6 +109,7 @@
 		A6CD43D41C29FB8300D43160 /* NotificationObjectHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationObjectHandler.swift; sourceTree = "<group>"; };
 		A6CD43D61C2B047000D43160 /* PrayerNotificationBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerNotificationBase.swift; sourceTree = "<group>"; };
 		A6CD43D81C2C541A00D43160 /* PrayerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerBase.swift; sourceTree = "<group>"; };
+		A6CD43DA1C304E8D00D43160 /* PrayerCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrayerCollectionViewController.xib; sourceTree = "<group>"; };
 		DD3FDCC493C590359A349683 /* Pods-ActionButtonApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionButtonApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionButtonApp/Pods-ActionButtonApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,10 +163,8 @@
 				A61065D61C27192B006F836F /* Controllers */,
 				A61065B91C271751006F836F /* AppDelegate.swift */,
 				A61065BB1C271751006F836F /* ViewController.swift */,
-				A61065BD1C271751006F836F /* Main.storyboard */,
 				A61065C01C271751006F836F /* Assets.xcassets */,
 				A61065CD1C271925006F836F /* ActionButtonApp-Bridging-Header.h */,
-				A61065C21C271751006F836F /* LaunchScreen.storyboard */,
 				A61065C51C271751006F836F /* Info.plist */,
 			);
 			path = ActionButtonApp;
@@ -177,14 +173,13 @@
 		A61065D61C27192B006F836F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A61065DC1C29BBC6006F836F /* BaseViewController.swift */,
 				A61065FD1C29CE9B006F836F /* ShotCollectionViewController.swift */,
 				A6CD43C21C29F12700D43160 /* PrayerCollectionViewController.swift */,
 				A61065F71C29C01B006F836F /* AddPrayerViewController.swift */,
-				A61065F51C29BEFD006F836F /* TabBarViewController.swift */,
 				A61065E71C29BD8F006F836F /* SettingsViewController.swift */,
 				A61065E31C29BD4D006F836F /* ProfileHeader.swift */,
 				A61065DE1C29BC61006F836F /* AccountViewController.swift */,
-				A61065DC1C29BBC6006F836F /* Main1ViewController.swift */,
 				A61065F91C29C11E006F836F /* NotificationsViewController.swift */,
 				A6CD43C61C29F29200D43160 /* NotificationsDetailViewController.swift */,
 				A6CD43CA1C29F84C00D43160 /* NotificationCollectionViewController.swift */,
@@ -196,8 +191,10 @@
 			isa = PBXGroup;
 			children = (
 				A61065E51C29BD65006F836F /* ProfileHeader.xib */,
-				A61065DA1C29BB82006F836F /* Main1.storyboard */,
+				A61065DA1C29BB82006F836F /* Main.storyboard */,
 				A61065FB1C29CE85006F836F /* ShotCollectionViewController.xib */,
+				A6CD43DA1C304E8D00D43160 /* PrayerCollectionViewController.xib */,
+				A61065C21C271751006F836F /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -231,10 +228,10 @@
 			children = (
 				A61066011C29CF0F006F836F /* ShotCollectionViewCell.swift */,
 				A61066021C29CF0F006F836F /* ShotCollectionViewCell.xib */,
-				A6CD43CC1C29F89C00D43160 /* NotificationCollectionViewCell.swift */,
-				A6CD43CE1C29F8B600D43160 /* NotificationCollectionViewCell.xib */,
 				A6CD43C01C29F05A00D43160 /* PrayerCollectionViewCell.swift */,
 				A6CD43BE1C29F02600D43160 /* PrayerCollectionViewCell.xib */,
+				A6CD43CC1C29F89C00D43160 /* NotificationCollectionViewCell.swift */,
+				A6CD43CE1C29F8B600D43160 /* NotificationCollectionViewCell.xib */,
 				A610660C1C29D065006F836F /* ImageModalViewController.swift */,
 				A610660D1C29D065006F836F /* ImageModalViewController.xib */,
 				A61065E11C29BCB5006F836F /* IOCell.swift */,
@@ -333,12 +330,12 @@
 				A6CD43BF1C29F02600D43160 /* PrayerCollectionViewCell.xib in Resources */,
 				A610660F1C29D065006F836F /* ImageModalViewController.xib in Resources */,
 				A6CD43CF1C29F8B600D43160 /* NotificationCollectionViewCell.xib in Resources */,
-				A61065DB1C29BB82006F836F /* Main1.storyboard in Resources */,
+				A61065DB1C29BB82006F836F /* Main.storyboard in Resources */,
 				A61065C41C271751006F836F /* LaunchScreen.storyboard in Resources */,
 				A61065E61C29BD65006F836F /* ProfileHeader.xib in Resources */,
 				A61065C11C271751006F836F /* Assets.xcassets in Resources */,
 				A61065CC1C27176A006F836F /* Podfile in Resources */,
-				A61065BF1C271751006F836F /* Main.storyboard in Resources */,
+				A6CD43DB1C304E8D00D43160 /* PrayerCollectionViewController.xib in Resources */,
 				A61065FC1C29CE85006F836F /* ShotCollectionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,10 +399,9 @@
 				A610660E1C29D065006F836F /* ImageModalViewController.swift in Sources */,
 				A6CD43C51C29F22700D43160 /* CAPSPageMenu.swift in Sources */,
 				A6CD43C31C29F12700D43160 /* PrayerCollectionViewController.swift in Sources */,
-				A61065F61C29BEFD006F836F /* TabBarViewController.swift in Sources */,
 				A61065FE1C29CE9B006F836F /* ShotCollectionViewController.swift in Sources */,
 				A6CD43CB1C29F84C00D43160 /* NotificationCollectionViewController.swift in Sources */,
-				A61065DD1C29BBC6006F836F /* Main1ViewController.swift in Sources */,
+				A61065DD1C29BBC6006F836F /* BaseViewController.swift in Sources */,
 				A61066111C29D0A5006F836F /* HttpService.swift in Sources */,
 				A61065EC1C29BDBB006F836F /* Colors.swift in Sources */,
 				A61065BC1C271751006F836F /* ViewController.swift in Sources */,
@@ -441,20 +437,13 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A61065BD1C271751006F836F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A61065BE1C271751006F836F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A61065C21C271751006F836F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A61065C31C271751006F836F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -480,6 +469,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -524,6 +514,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

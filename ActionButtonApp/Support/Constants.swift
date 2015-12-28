@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/*
 struct TabBarConstants {
     
     static let mainViewControllers = [
@@ -25,6 +26,7 @@ struct TabBarConstants {
 enum TabBarControllerViewControllerIndex: Int {
     case HomeTabBarItemIndex = 0, EmptyTabBarItemIndex, ActivityTabBarItemIndex
 }
+*/
 
 // Ilya     400680
 // James    403902

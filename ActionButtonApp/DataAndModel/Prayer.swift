@@ -22,13 +22,14 @@ public class Prayer: Object {
 
 import Foundation
 
-class Prayer: DribbbleBase {
+class Prayer: PrayerBase {
     var imageUrl:String!
     var htmlUrl:String!
     var imageData: NSData?
     
-    var shotName = ""
-    var designerName = ""
+    ///var shotName = ""
+    var prayerTitle = ""
+    var userName = ""
     var avatarUrl = ""
     var shotCount = 0
     
@@ -39,9 +40,9 @@ class Prayer: DribbbleBase {
         self.imageUrl = Utility.getStringFromJSON(images, key: "normal")
         self.htmlUrl = data["html_url"] as! String
         
-        shotName = data["title"] as! String
+       prayerTitle = data["title"] as! String
         let user = data["user"] as! NSDictionary
-        designerName = Utility.getStringFromJSON(user, key: "name")
+        userName = Utility.getStringFromJSON(user, key: "name")
         avatarUrl = Utility.getStringFromJSON(user, key: "avatar_url")
         shotCount = data["views_count"] as! Int
     }

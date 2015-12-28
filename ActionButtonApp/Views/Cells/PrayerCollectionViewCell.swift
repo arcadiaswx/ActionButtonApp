@@ -18,7 +18,6 @@ class PrayerCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         self.translatesAutoresizingMaskIntoConstraints = false
-        
         self.layer.cornerRadius = 3
         self.layer.masksToBounds = true
         
