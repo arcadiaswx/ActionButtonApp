@@ -12,8 +12,8 @@ import UIKit
 
 class PrayerObjectHandler {
     
-    class func asyncLoadShotImage(prayer: Prayer, imageView: UIImageView){
-        let downloadQueue = dispatch_queue_create("com.naoyashiga.processdownload", nil)
+    class func asyncLoadPrayerImage(prayer: Prayer){
+        let downloadQueue = dispatch_queue_create("com.teklabsco.processdownload", nil)
         
         dispatch_async(downloadQueue){
             let data = NSData(contentsOfURL: NSURL(string: prayer.imageUrl)!)
@@ -29,7 +29,7 @@ class PrayerObjectHandler {
 //            imageView.sd_setImageWithURL(NSURL(string: shot.imageUrl)!)
             
             dispatch_async(dispatch_get_main_queue()){
-                imageView.image = image
+                //imageView.image = image
             }
         }
     }

@@ -12,7 +12,7 @@ import UIKit
 
 class NotificationObjectHandler {
     
-    class func asyncLoadShotImage(notification: Notification, imageView: UIImageView){
+    class func asyncLoadNotificationImage(notification: Notification, imageView: UIImageView){
         let downloadQueue = dispatch_queue_create("com.teklabsco.processdownload", nil)
         
         dispatch_async(downloadQueue){
@@ -26,7 +26,7 @@ class NotificationObjectHandler {
                 image = UIImage(data: data!)!
             }
             
-//            imageView.sd_setImageWithURL(NSURL(string: shot.imageUrl)!)
+//            imageView.sd_setImageWithURL(NSURL(string: notification.imageUrl)!)
             
             dispatch_async(dispatch_get_main_queue()){
                 imageView.image = image

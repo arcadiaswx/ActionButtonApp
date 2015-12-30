@@ -13,7 +13,7 @@ import Foundation
 class NotificationsViewController: UIViewController {
     var notification:Notification?
     var notificationToPass:Notification?
-    var notifs:[Notification] = []
+    //var notifs:[Notification] = []
     @IBOutlet weak var tableView: UITableView!
             let notifItems = ["Notif Item 1", "Notif Item 2", "Notif Item 3", "Notif Item 4", "Notif Item 5"]
     @IBAction func dissmissNotifications() {

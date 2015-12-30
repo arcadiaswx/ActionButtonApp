@@ -16,6 +16,7 @@ use_frameworks!
   pod 'ParseFacebookUtilsV4'
   pod 'ParseTwitterUtils'
   pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
   pod 'TwitterKit'
   pod 'TwitterCore'
 

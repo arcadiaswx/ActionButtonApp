@@ -26,7 +26,7 @@ public class Notification: Object {
 */
 import Foundation
 
-class Notification: PrayerNotificationBase {
+class Notification: PrayerBase {
     var imageUrl:String!
     var htmlUrl:String!
     var imageData: NSData?

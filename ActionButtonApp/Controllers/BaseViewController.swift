@@ -15,6 +15,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         var controllerArray : [UIViewController] = []
         self.navigationItem.title = "ActionButtonApp"
+        self.navigationItem.rightBarButtonItem = SettingsButtonItem(target: self, action: Selector("settingsButtonAction:"))
         
         self.navigationController?.navigationBarHidden = false
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.navigationBarTitleTextColor()]
@@ -22,7 +23,7 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = false
-        
+
         ///
         
         let popularShot = PrayerCollectionViewController(nibName: "PrayerCollectionViewController", bundle: nil)
@@ -33,13 +34,13 @@ class BaseViewController: UIViewController {
         controllerArray.append(popularShot)
 
 
-        let teamsShot = ShotCollectionViewController(nibName: "ShotCollectionViewController", bundle: nil)
+        let teamsShot = PrayerCollectionViewController(nibName: "PrayerCollectionViewController", bundle: nil)
         teamsShot.title = "My List"
         teamsShot.API_URL = Config.TEAMS_URL
         teamsShot.loadShots()
         controllerArray.append(teamsShot)
         
-        let reboundsShot = ShotCollectionViewController(nibName: "ShotCollectionViewController", bundle: nil)
+        let reboundsShot = PrayerCollectionViewController(nibName: "PrayerCollectionViewController", bundle: nil)
         reboundsShot.title = "Trending"
         reboundsShot.API_URL = Config.REBOUNDS_URL
         reboundsShot.loadShots()
@@ -85,5 +86,35 @@ class BaseViewController: UIViewController {
         actionButton.backgroundColor = UIColor(red: 238.0/255.0, green: 130.0/255.0, blue: 34.0/255.0, alpha:1.0)
         
     }
-
+    func settingsButtonAction(sender: AnyObject) {
+        
+        //self.navigationController!.pushViewController(AccountViewController(user: PFUser.currentUser()!), animated: true)
+    }
+    /*
+    func settingsButtonAction(sender: AnyObject) {
+        
+        /*
+        let actionController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let myProfileAction = UIAlertAction(title: NSLocalizedString("My Profile", comment: ""), style: UIAlertActionStyle.Default, handler: { _ in
+            self.navigationController!.pushViewController(PAPAccountViewController(user: PFUser.currentUser()!), animated: true)
+        })
+        let findFriendsAction = UIAlertAction(title: NSLocalizedString("Find Friends", comment: ""), style: UIAlertActionStyle.Default, handler: { _ in
+            self.navigationController!.pushViewController(PAPFindFriendsViewController(style: UITableViewStyle.Plain), animated: true)
+        })
+        let logOutAction = UIAlertAction(title: NSLocalizedString("Log Out", comment: ""), style: UIAlertActionStyle.Default, handler: { _ in
+            // Log out user and present the login view controller
+            (UIApplication.sharedApplication().delegate as! AppDelegate).logOut()
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        actionController.addAction(myProfileAction)
+        actionController.addAction(findFriendsAction)
+        actionController.addAction(logOutAction)
+        actionController.addAction(cancelAction)
+        */
+        let accountViewController: AccountViewController = AccountViewController()
+        self.presentViewController(accountViewController, animated: true, completion: nil)
+    }
+    */
 }

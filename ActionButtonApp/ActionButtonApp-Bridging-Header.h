@@ -13,6 +13,8 @@
 //#import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <ParseUI/ParseUI.h>
 #import <Bolts/Bolts.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <FormatterKit/TTTTimeIntervalFormatter.h>
 #import <SDWebImage/UIImageView+WebCache.h>

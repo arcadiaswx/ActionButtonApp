@@ -9,35 +9,7 @@
 import Foundation
 import UIKit
 
-/*
-struct TabBarConstants {
-    
-    static let mainViewControllers = [
-        MainViewController(storyboardName: "Main1", imageName: "one"),
-        //MainViewController(storyboardName: "Main2", imageName: "two"),
-        MainViewController(storyboardName: "Main3", imageName: "three")
-        //MainViewController(storyboardName: "Main4", imageName: "four")
-    ]
-    
-    static let RTL = false
-    
-    static let tabBarAnimationDuration = NSTimeInterval(0.2)
-}
-enum TabBarControllerViewControllerIndex: Int {
-    case HomeTabBarItemIndex = 0, EmptyTabBarItemIndex, ActivityTabBarItemIndex
-}
-*/
 
-// Ilya     400680
-// James    403902
-// David    1225726
-// Bryan    4806789
-// Thomas   6409809
-// Ashley   12800553
-// Héctor   121800083
-// Kevin    500011038
-// Chris    558159381
-// Matt     723748661
 
 let kEmployeeAccounts = ["400680", "403902", "1225726", "4806789", "6409809", "12800553", "121800083", "500011038", "558159381", "723748661"]
 

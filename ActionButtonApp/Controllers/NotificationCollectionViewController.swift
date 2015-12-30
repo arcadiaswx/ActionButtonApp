@@ -11,7 +11,7 @@ import UIKit
 let reuseIdentifier_Notif = "NotificationCollectionViewCell"
 
 class NotificationCollectionViewController: UICollectionViewController{
-    private var shots:[Shot] = [Shot]() {
+    private var notifications:[Notification] = [Notification]() {
         didSet{
             self.collectionView?.reloadData()
         }
@@ -26,7 +26,7 @@ class NotificationCollectionViewController: UICollectionViewController{
     var API_URL = Config.SHOT_URL
     var parentNavigationController = UINavigationController()
     
-    var shotPages = 1
+    var notificationPages = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +38,10 @@ class NotificationCollectionViewController: UICollectionViewController{
         cellWidth = self.view.bounds.width
         cellHeight = self.view.bounds.height / 2.5
         
-        self.collectionView?.registerNib(UINib(nibName: "NotificationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier_Shot)
+        self.collectionView?.registerNib(UINib(nibName: "NotificationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier_Notif)
         
-        DribbleObjectHandler.getShots(API_URL, callback: {(shots) -> Void in
-            self.shots = shots
+        NotificationObjectHandler.getNotifications(API_URL, callback: {(notifications) -> Void in
+            self.notifications = notifications
         })
         
         let refreshControl = UIRefreshControl()
@@ -66,38 +66,38 @@ class NotificationCollectionViewController: UICollectionViewController{
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shots.count
+        return notifications.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier_Shot, forIndexPath: indexPath) as! ShotCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier_Notif, forIndexPath: indexPath) as! NotificationCollectionViewCell
         
-        let shot = shots[indexPath.row]
+        let notification = notifications[indexPath.row]
         
-        cell.imageView.sd_setImageWithURL(NSURL(string: shot.imageUrl)!)
+        cell.imageView.sd_setImageWithURL(NSURL(string: notification.imageUrl)!)
         //        cell.imageView.layer.shadowColor = UIColor.blackColor().CGColor
         //        cell.imageView.layer.shadowOffset = CGSize(width: 0, height: 10)
         //        cell.imageView.layer.shadowOpacity = 0.8
         //        cell.imageView.layer.shadowRadius = 5
         
-        cell.designerIcon.sd_setImageWithURL(NSURL(string: shot.avatarUrl)!)
+        cell.designerIcon.sd_setImageWithURL(NSURL(string: notification.avatarUrl)!)
         cell.designerIcon.layer.cornerRadius = cell.designerIcon.bounds.width / 2
         cell.designerIcon.layer.masksToBounds = true
         
-        cell.shotName.text = shot.shotName
-        cell.designerName.text = shot.designerName
-        cell.viewLabel.text = String(shot.shotCount)
+        cell.notificationName.text = notification.notificationName
+        cell.designerName.text = notification.designerName
+        cell.viewLabel.text = String(notification.notificationCount)
         
         
-        if shots.count - 1 == indexPath.row && shotPages < 5 {
-            shotPages++
-            print(shotPages)
-            let url = API_URL + "&page=" + String(shotPages)
-            DribbleObjectHandler.getShots(url, callback: {(shots) -> Void in
-                //                self.shots = shots
+        if notifications.count - 1 == indexPath.row && notificationPages < 5 {
+            notificationPages++
+            print(notificationPages)
+            let url = API_URL + "&page=" + String(notificationPages)
+            DribbleObjectHandler.getShots(url, callback: {(notifications) -> Void in
+                //                self.notifications = notifications
                 
-                for shot in shots {
-                    self.shots.append(shot)
+                for notification in notifications {
+                    self.notifications.append(notification)
                 }
             })
         }
@@ -116,7 +116,7 @@ class NotificationCollectionViewController: UICollectionViewController{
         //        let imageLoadQueue = dispatch_queue_create("imageLoadQueue", nil)
         //
         //        SDWebImageDownloader.sharedDownloader().downloadImageWithURL(
-        //            NSURL(string: shot.imageUrl),
+        //            NSURL(string: notification.imageUrl),
         //            options: SDWebImageDownloaderOptions.UseNSURLCache,
         //            progress: nil,
         //            completed: { (image: UIImage!, data: NSData!, error: NSError!, finished: Bool) -> Void in
@@ -133,7 +133,7 @@ class NotificationCollectionViewController: UICollectionViewController{
         //
         //        })
         
-        //        DribbleObjectHandler.asyncLoadShotImage(shot, imageView: cell.imageView)
+        //        DribbleObjectHandler.asyncLoadShotImage(notification, imageView: cell.imageView)
         
         return cell
     }
@@ -156,26 +156,26 @@ class NotificationCollectionViewController: UICollectionViewController{
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let _ = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier_Shot, forIndexPath: indexPath) as! ShotCollectionViewCell
-        let shot = shots[indexPath.row]
+        let _ = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier_Notif, forIndexPath: indexPath) as! NotificationCollectionViewCell
+        let notification = notifications[indexPath.row]
         let vc = ImageModalViewController(nibName: "ImageModalViewController", bundle: nil)
         //        var vc = DetailViewController(nibName: "DetailViewController", bundle: nil)
         vc.modalPresentationStyle = .FullScreen
         vc.modalTransitionStyle = .CrossDissolve
         //        vc.parentNavigationController = parentNavigationController
-        vc.pageUrl = shot.htmlUrl
-        vc.shotName = shot.shotName
-        vc.designerName = shot.designerName
+        vc.pageUrl = notification.htmlUrl
+        vc.notificationName = notification.notificationName
+        vc.designerName = notification.designerName
         
         let downloadQueue = dispatch_queue_create("com.naoyashiga.processdownload", nil)
         
         dispatch_async(downloadQueue){
-            let data = NSData(contentsOfURL: NSURL(string: shot.imageUrl)!)
+            let data = NSData(contentsOfURL: NSURL(string: notification.imageUrl)!)
             
             var image: UIImage?
             
             if data != nil {
-                shot.imageData = data
+                notification.imageData = data
                 image = UIImage(data: data!)!
             }
             

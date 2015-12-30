@@ -1,5 +1,5 @@
 //
-//  ShotCollectionViewController.swift
+//  PrayerCollectionViewController.swift
 //  DribbbleReader
 //
 //  Created by naoyashiga on 2015/05/22.
@@ -70,7 +70,7 @@ class PrayerCollectionViewController: UICollectionViewController{
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier_Shot, forIndexPath: indexPath) as! PrayerCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier_Prayer, forIndexPath: indexPath) as! PrayerCollectionViewCell
         
         let prayer = prayers[indexPath.row]
         
@@ -100,7 +100,7 @@ class PrayerCollectionViewController: UICollectionViewController{
 
         
         //        DribbleObjectHandler.asyncLoadShotImage(shot, imageView: cell.imageView)
-        
+        PrayerObjectHandler.asyncLoadPrayerImage(prayer)
         return cell
     }
     
@@ -122,9 +122,10 @@ class PrayerCollectionViewController: UICollectionViewController{
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let _ = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier_Shot, forIndexPath: indexPath) as! ShotCollectionViewCell
+        let _ = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier_Prayer, forIndexPath: indexPath) as! PrayerCollectionViewCell
         let prayer = prayers[indexPath.row]
-        let vc = ImageModalViewController(nibName: "ImageModalViewController", bundle: nil)
+        let vc = PrayerModalViewController(nibName: "PrayerModalViewController", bundle: nil)
+        //let vc = ImageModalViewController(nibName: "ImageModalViewController", bundle: nil)
 //        var vc = DetailViewController(nibName: "DetailViewController", bundle: nil)
         vc.modalPresentationStyle = .FullScreen
         vc.modalTransitionStyle = .CrossDissolve

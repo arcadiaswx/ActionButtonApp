@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		597962593030551F9EE8E0EA /* Pods_ActionButtonApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457885DD1EB4834F12BA079D /* Pods_ActionButtonApp.framework */; };
 		A61065BA1C271751006F836F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065B91C271751006F836F /* AppDelegate.swift */; };
-		A61065BC1C271751006F836F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065BB1C271751006F836F /* ViewController.swift */; };
 		A61065C11C271751006F836F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A61065C01C271751006F836F /* Assets.xcassets */; };
-		A61065C41C271751006F836F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61065C21C271751006F836F /* LaunchScreen.storyboard */; };
 		A61065CC1C27176A006F836F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A61065CB1C27176A006F836F /* Podfile */; };
-		A61065DB1C29BB82006F836F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61065DA1C29BB82006F836F /* Main.storyboard */; };
+		A61065DB1C29BB82006F836F /* MainOld.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61065DA1C29BB82006F836F /* MainOld.storyboard */; };
 		A61065DD1C29BBC6006F836F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065DC1C29BBC6006F836F /* BaseViewController.swift */; };
 		A61065DF1C29BC61006F836F /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065DE1C29BC61006F836F /* AccountViewController.swift */; };
 		A61065E21C29BCB5006F836F /* IOCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065E11C29BCB5006F836F /* IOCell.swift */; };
@@ -29,10 +27,7 @@
 		A61065F81C29C01B006F836F /* AddPrayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065F71C29C01B006F836F /* AddPrayerViewController.swift */; };
 		A61065FA1C29C11E006F836F /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065F91C29C11E006F836F /* NotificationsViewController.swift */; };
 		A61065FC1C29CE85006F836F /* ShotCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A61065FB1C29CE85006F836F /* ShotCollectionViewController.xib */; };
-		A61065FE1C29CE9B006F836F /* ShotCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065FD1C29CE9B006F836F /* ShotCollectionViewController.swift */; };
 		A61066001C29CED2006F836F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61065FF1C29CED2006F836F /* Config.swift */; };
-		A61066031C29CF0F006F836F /* ShotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61066011C29CF0F006F836F /* ShotCollectionViewCell.swift */; };
-		A61066041C29CF0F006F836F /* ShotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A61066021C29CF0F006F836F /* ShotCollectionViewCell.xib */; };
 		A61066071C29D033006F836F /* DribbbleObjectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61066061C29D033006F836F /* DribbbleObjectHandler.swift */; };
 		A610660A1C29D03C006F836F /* DribbbleBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61066081C29D03C006F836F /* DribbbleBase.swift */; };
 		A610660B1C29D03C006F836F /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61066091C29D03C006F836F /* Shot.swift */; };
@@ -45,16 +40,22 @@
 		A6CD43C31C29F12700D43160 /* PrayerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43C21C29F12700D43160 /* PrayerCollectionViewController.swift */; };
 		A6CD43C51C29F22700D43160 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43C41C29F22700D43160 /* CAPSPageMenu.swift */; };
 		A6CD43C71C29F29200D43160 /* NotificationsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43C61C29F29200D43160 /* NotificationsDetailViewController.swift */; };
-		A6CD43C91C29F5B600D43160 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43C81C29F5B600D43160 /* Notification.swift */; };
-		A6CD43CB1C29F84C00D43160 /* NotificationCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43CA1C29F84C00D43160 /* NotificationCollectionViewController.swift */; };
-		A6CD43CD1C29F89C00D43160 /* NotificationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43CC1C29F89C00D43160 /* NotificationCollectionViewCell.swift */; };
-		A6CD43CF1C29F8B600D43160 /* NotificationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6CD43CE1C29F8B600D43160 /* NotificationCollectionViewCell.xib */; };
 		A6CD43D11C29FA4800D43160 /* Prayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43D01C29FA4800D43160 /* Prayer.swift */; };
 		A6CD43D31C29FB6E00D43160 /* PrayerObjectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43D21C29FB6E00D43160 /* PrayerObjectHandler.swift */; };
-		A6CD43D51C29FB8300D43160 /* NotificationObjectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43D41C29FB8300D43160 /* NotificationObjectHandler.swift */; };
-		A6CD43D71C2B047000D43160 /* PrayerNotificationBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43D61C2B047000D43160 /* PrayerNotificationBase.swift */; };
 		A6CD43D91C2C541A00D43160 /* PrayerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43D81C2C541A00D43160 /* PrayerBase.swift */; };
 		A6CD43DB1C304E8D00D43160 /* PrayerCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6CD43DA1C304E8D00D43160 /* PrayerCollectionViewController.xib */; };
+		A6D732E71C31B9DC00419BF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6D732E61C31B9DC00419BF9 /* Main.storyboard */; };
+		A6D732E91C31BC2500419BF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6D732E81C31BC2500419BF9 /* LaunchScreen.storyboard */; };
+		A6D732EE1C32F94800419BF9 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D732ED1C32F94800419BF9 /* Notification.swift */; };
+		A6D732F21C32FC0B00419BF9 /* PrayerModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6D732F11C32FC0B00419BF9 /* PrayerModalViewController.xib */; };
+		A6D732F61C32FC3400419BF9 /* PrayerModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D732F51C32FC3400419BF9 /* PrayerModalViewController.swift */; };
+		A6D732F81C3302F900419BF9 /* SettingsButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D732F71C3302F900419BF9 /* SettingsButtonItem.swift */; };
+		A6D732FA1C342BA600419BF9 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D732F91C342BA600419BF9 /* Reachability.swift */; };
+		A6D732FC1C342CE200419BF9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D732FB1C342CE200419BF9 /* WelcomeViewController.swift */; };
+		A6D732FE1C342CEA00419BF9 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D732FD1C342CEA00419BF9 /* LogInViewController.swift */; };
+		A6D733001C34301100419BF9 /* AppIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D732FF1C34301100419BF9 /* AppIntroViewController.swift */; };
+		A6D733021C3431B200419BF9 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6D733011C3431B200419BF9 /* WelcomeViewController.xib */; };
+		A6D733041C343B5900419BF9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D733031C343B5900419BF9 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,13 +63,11 @@
 		69D17A3AF8478AA67B494222 /* Pods-ActionButtonApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionButtonApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ActionButtonApp/Pods-ActionButtonApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A61065B61C271751006F836F /* ActionButtonApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActionButtonApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61065B91C271751006F836F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A61065BB1C271751006F836F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A61065C01C271751006F836F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A61065C31C271751006F836F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A61065C51C271751006F836F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A61065CB1C27176A006F836F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A61065CD1C271925006F836F /* ActionButtonApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ActionButtonApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		A61065DA1C29BB82006F836F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A61065DA1C29BB82006F836F /* MainOld.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainOld.storyboard; sourceTree = "<group>"; };
 		A61065DC1C29BBC6006F836F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A61065DE1C29BC61006F836F /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		A61065E11C29BCB5006F836F /* IOCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOCell.swift; sourceTree = "<group>"; };
@@ -84,10 +83,7 @@
 		A61065F71C29C01B006F836F /* AddPrayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPrayerViewController.swift; sourceTree = "<group>"; };
 		A61065F91C29C11E006F836F /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		A61065FB1C29CE85006F836F /* ShotCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShotCollectionViewController.xib; sourceTree = "<group>"; };
-		A61065FD1C29CE9B006F836F /* ShotCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotCollectionViewController.swift; sourceTree = "<group>"; };
 		A61065FF1C29CED2006F836F /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		A61066011C29CF0F006F836F /* ShotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotCollectionViewCell.swift; sourceTree = "<group>"; };
-		A61066021C29CF0F006F836F /* ShotCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShotCollectionViewCell.xib; sourceTree = "<group>"; };
 		A61066061C29D033006F836F /* DribbbleObjectHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DribbbleObjectHandler.swift; sourceTree = "<group>"; };
 		A61066081C29D03C006F836F /* DribbbleBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DribbbleBase.swift; sourceTree = "<group>"; };
 		A61066091C29D03C006F836F /* Shot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
@@ -100,16 +96,22 @@
 		A6CD43C21C29F12700D43160 /* PrayerCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerCollectionViewController.swift; sourceTree = "<group>"; };
 		A6CD43C41C29F22700D43160 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		A6CD43C61C29F29200D43160 /* NotificationsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsDetailViewController.swift; sourceTree = "<group>"; };
-		A6CD43C81C29F5B600D43160 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
-		A6CD43CA1C29F84C00D43160 /* NotificationCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCollectionViewController.swift; sourceTree = "<group>"; };
-		A6CD43CC1C29F89C00D43160 /* NotificationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCollectionViewCell.swift; sourceTree = "<group>"; };
-		A6CD43CE1C29F8B600D43160 /* NotificationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCollectionViewCell.xib; sourceTree = "<group>"; };
 		A6CD43D01C29FA4800D43160 /* Prayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prayer.swift; sourceTree = "<group>"; };
 		A6CD43D21C29FB6E00D43160 /* PrayerObjectHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerObjectHandler.swift; sourceTree = "<group>"; };
-		A6CD43D41C29FB8300D43160 /* NotificationObjectHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationObjectHandler.swift; sourceTree = "<group>"; };
-		A6CD43D61C2B047000D43160 /* PrayerNotificationBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerNotificationBase.swift; sourceTree = "<group>"; };
 		A6CD43D81C2C541A00D43160 /* PrayerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerBase.swift; sourceTree = "<group>"; };
 		A6CD43DA1C304E8D00D43160 /* PrayerCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrayerCollectionViewController.xib; sourceTree = "<group>"; };
+		A6D732E61C31B9DC00419BF9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A6D732E81C31BC2500419BF9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A6D732ED1C32F94800419BF9 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		A6D732F11C32FC0B00419BF9 /* PrayerModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrayerModalViewController.xib; sourceTree = "<group>"; };
+		A6D732F51C32FC3400419BF9 /* PrayerModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerModalViewController.swift; sourceTree = "<group>"; };
+		A6D732F71C3302F900419BF9 /* SettingsButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsButtonItem.swift; sourceTree = "<group>"; };
+		A6D732F91C342BA600419BF9 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		A6D732FB1C342CE200419BF9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		A6D732FD1C342CEA00419BF9 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		A6D732FF1C34301100419BF9 /* AppIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIntroViewController.swift; sourceTree = "<group>"; };
+		A6D733011C3431B200419BF9 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
+		A6D733031C343B5900419BF9 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		DD3FDCC493C590359A349683 /* Pods-ActionButtonApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionButtonApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionButtonApp/Pods-ActionButtonApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,13 +158,11 @@
 		A61065B81C271751006F836F /* ActionButtonApp */ = {
 			isa = PBXGroup;
 			children = (
+				A61065B91C271751006F836F /* AppDelegate.swift */,
+				A61065D81C29BB4B006F836F /* Support */,
 				A61066051C29CFDB006F836F /* Data and Model */,
 				A61065D91C29BB5D006F836F /* Views */,
-				A61065D81C29BB4B006F836F /* Support */,
-				A61065D71C29BB33006F836F /* Storyboards */,
 				A61065D61C27192B006F836F /* Controllers */,
-				A61065B91C271751006F836F /* AppDelegate.swift */,
-				A61065BB1C271751006F836F /* ViewController.swift */,
 				A61065C01C271751006F836F /* Assets.xcassets */,
 				A61065CD1C271925006F836F /* ActionButtonApp-Bridging-Header.h */,
 				A61065C51C271751006F836F /* Info.plist */,
@@ -173,8 +173,10 @@
 		A61065D61C27192B006F836F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A6D732FF1C34301100419BF9 /* AppIntroViewController.swift */,
+				A6D732FB1C342CE200419BF9 /* WelcomeViewController.swift */,
+				A6D732FD1C342CEA00419BF9 /* LogInViewController.swift */,
 				A61065DC1C29BBC6006F836F /* BaseViewController.swift */,
-				A61065FD1C29CE9B006F836F /* ShotCollectionViewController.swift */,
 				A6CD43C21C29F12700D43160 /* PrayerCollectionViewController.swift */,
 				A61065F71C29C01B006F836F /* AddPrayerViewController.swift */,
 				A61065E71C29BD8F006F836F /* SettingsViewController.swift */,
@@ -182,7 +184,6 @@
 				A61065DE1C29BC61006F836F /* AccountViewController.swift */,
 				A61065F91C29C11E006F836F /* NotificationsViewController.swift */,
 				A6CD43C61C29F29200D43160 /* NotificationsDetailViewController.swift */,
-				A6CD43CA1C29F84C00D43160 /* NotificationCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -190,11 +191,12 @@
 		A61065D71C29BB33006F836F /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				A6D732E61C31B9DC00419BF9 /* Main.storyboard */,
 				A61065E51C29BD65006F836F /* ProfileHeader.xib */,
-				A61065DA1C29BB82006F836F /* Main.storyboard */,
+				A61065DA1C29BB82006F836F /* MainOld.storyboard */,
 				A61065FB1C29CE85006F836F /* ShotCollectionViewController.xib */,
 				A6CD43DA1C304E8D00D43160 /* PrayerCollectionViewController.xib */,
-				A61065C21C271751006F836F /* LaunchScreen.storyboard */,
+				A6D732E81C31BC2500419BF9 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -202,6 +204,7 @@
 		A61065D81C29BB4B006F836F /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				A6D733031C343B5900419BF9 /* Settings.swift */,
 				A6CD43C41C29F22700D43160 /* CAPSPageMenu.swift */,
 				A6CD43BC1C29EDA100D43160 /* Utility.swift */,
 				A61065FF1C29CED2006F836F /* Config.swift */,
@@ -211,6 +214,8 @@
 				A61065ED1C29BDCC006F836F /* Constants.swift */,
 				A61065EB1C29BDBB006F836F /* Colors.swift */,
 				A61065E91C29BDAF006F836F /* Globals.swift */,
+				A6D732F71C3302F900419BF9 /* SettingsButtonItem.swift */,
+				A6D732F91C342BA600419BF9 /* Reachability.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -218,7 +223,11 @@
 		A61065D91C29BB5D006F836F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A6D732F51C32FC3400419BF9 /* PrayerModalViewController.swift */,
+				A6D732F11C32FC0B00419BF9 /* PrayerModalViewController.xib */,
+				A61065D71C29BB33006F836F /* Storyboards */,
 				A61065E01C29BC88006F836F /* Cells */,
+				A6D733011C3431B200419BF9 /* WelcomeViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -226,12 +235,8 @@
 		A61065E01C29BC88006F836F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A61066011C29CF0F006F836F /* ShotCollectionViewCell.swift */,
-				A61066021C29CF0F006F836F /* ShotCollectionViewCell.xib */,
 				A6CD43C01C29F05A00D43160 /* PrayerCollectionViewCell.swift */,
 				A6CD43BE1C29F02600D43160 /* PrayerCollectionViewCell.xib */,
-				A6CD43CC1C29F89C00D43160 /* NotificationCollectionViewCell.swift */,
-				A6CD43CE1C29F8B600D43160 /* NotificationCollectionViewCell.xib */,
 				A610660C1C29D065006F836F /* ImageModalViewController.swift */,
 				A610660D1C29D065006F836F /* ImageModalViewController.xib */,
 				A61065E11C29BCB5006F836F /* IOCell.swift */,
@@ -242,15 +247,13 @@
 		A61066051C29CFDB006F836F /* Data and Model */ = {
 			isa = PBXGroup;
 			children = (
+				A6D732ED1C32F94800419BF9 /* Notification.swift */,
 				A61066061C29D033006F836F /* DribbbleObjectHandler.swift */,
 				A6CD43D21C29FB6E00D43160 /* PrayerObjectHandler.swift */,
-				A6CD43D41C29FB8300D43160 /* NotificationObjectHandler.swift */,
 				A61066081C29D03C006F836F /* DribbbleBase.swift */,
 				A6CD43D81C2C541A00D43160 /* PrayerBase.swift */,
-				A6CD43D61C2B047000D43160 /* PrayerNotificationBase.swift */,
 				A61066091C29D03C006F836F /* Shot.swift */,
 				A6CD43D01C29FA4800D43160 /* Prayer.swift */,
-				A6CD43C81C29F5B600D43160 /* Notification.swift */,
 				A61066101C29D0A5006F836F /* HttpService.swift */,
 			);
 			name = "Data and Model";
@@ -326,12 +329,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A61066041C29CF0F006F836F /* ShotCollectionViewCell.xib in Resources */,
 				A6CD43BF1C29F02600D43160 /* PrayerCollectionViewCell.xib in Resources */,
 				A610660F1C29D065006F836F /* ImageModalViewController.xib in Resources */,
-				A6CD43CF1C29F8B600D43160 /* NotificationCollectionViewCell.xib in Resources */,
-				A61065DB1C29BB82006F836F /* Main.storyboard in Resources */,
-				A61065C41C271751006F836F /* LaunchScreen.storyboard in Resources */,
+				A6D732E71C31B9DC00419BF9 /* Main.storyboard in Resources */,
+				A61065DB1C29BB82006F836F /* MainOld.storyboard in Resources */,
+				A6D732E91C31BC2500419BF9 /* LaunchScreen.storyboard in Resources */,
+				A6D733021C3431B200419BF9 /* WelcomeViewController.xib in Resources */,
+				A6D732F21C32FC0B00419BF9 /* PrayerModalViewController.xib in Resources */,
 				A61065E61C29BD65006F836F /* ProfileHeader.xib in Resources */,
 				A61065C11C271751006F836F /* Assets.xcassets in Resources */,
 				A61065CC1C27176A006F836F /* Podfile in Resources */,
@@ -399,17 +403,17 @@
 				A610660E1C29D065006F836F /* ImageModalViewController.swift in Sources */,
 				A6CD43C51C29F22700D43160 /* CAPSPageMenu.swift in Sources */,
 				A6CD43C31C29F12700D43160 /* PrayerCollectionViewController.swift in Sources */,
-				A61065FE1C29CE9B006F836F /* ShotCollectionViewController.swift in Sources */,
-				A6CD43CB1C29F84C00D43160 /* NotificationCollectionViewController.swift in Sources */,
 				A61065DD1C29BBC6006F836F /* BaseViewController.swift in Sources */,
+				A6D732F81C3302F900419BF9 /* SettingsButtonItem.swift in Sources */,
+				A6D733041C343B5900419BF9 /* Settings.swift in Sources */,
 				A61066111C29D0A5006F836F /* HttpService.swift in Sources */,
 				A61065EC1C29BDBB006F836F /* Colors.swift in Sources */,
-				A61065BC1C271751006F836F /* ViewController.swift in Sources */,
+				A6D732FC1C342CE200419BF9 /* WelcomeViewController.swift in Sources */,
 				A61065E81C29BD8F006F836F /* SettingsViewController.swift in Sources */,
-				A6CD43D71C2B047000D43160 /* PrayerNotificationBase.swift in Sources */,
 				A610660B1C29D03C006F836F /* Shot.swift in Sources */,
 				A6CD43BD1C29EDA100D43160 /* Utility.swift in Sources */,
 				A61065E41C29BD4D006F836F /* ProfileHeader.swift in Sources */,
+				A6D732F61C32FC3400419BF9 /* PrayerModalViewController.swift in Sources */,
 				A61065F41C29BE69006F836F /* NotificationHelper.swift in Sources */,
 				A61065EE1C29BDCC006F836F /* Constants.swift in Sources */,
 				A61065F21C29BE4E006F836F /* Extensions.swift in Sources */,
@@ -423,30 +427,18 @@
 				A6CD43D11C29FA4800D43160 /* Prayer.swift in Sources */,
 				A61065BA1C271751006F836F /* AppDelegate.swift in Sources */,
 				A61065E21C29BCB5006F836F /* IOCell.swift in Sources */,
-				A6CD43D51C29FB8300D43160 /* NotificationObjectHandler.swift in Sources */,
 				A61066071C29D033006F836F /* DribbbleObjectHandler.swift in Sources */,
-				A6CD43C91C29F5B600D43160 /* Notification.swift in Sources */,
+				A6D732FE1C342CEA00419BF9 /* LogInViewController.swift in Sources */,
+				A6D732EE1C32F94800419BF9 /* Notification.swift in Sources */,
 				A6CD43C11C29F05A00D43160 /* PrayerCollectionViewCell.swift in Sources */,
-				A6CD43CD1C29F89C00D43160 /* NotificationCollectionViewCell.swift in Sources */,
 				A61065FA1C29C11E006F836F /* NotificationsViewController.swift in Sources */,
+				A6D733001C34301100419BF9 /* AppIntroViewController.swift in Sources */,
+				A6D732FA1C342BA600419BF9 /* Reachability.swift in Sources */,
 				A6CD43D31C29FB6E00D43160 /* PrayerObjectHandler.swift in Sources */,
-				A61066031C29CF0F006F836F /* ShotCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		A61065C21C271751006F836F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A61065C31C271751006F836F /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A61065C61C271751006F836F /* Debug */ = {
