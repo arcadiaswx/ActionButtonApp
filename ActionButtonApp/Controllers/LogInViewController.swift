@@ -1,56 +1,52 @@
-import UIKit
-import Foundation
-//import Parse
-//import ParseFacebookUtilsV4
 
-class LogInViewController : PFLogInViewController {
-    
+import Foundation
+
+class LoginViewController : UIViewController {
+    var delegate: LoginViewControllerDelegate?
     var backgroundImage : UIImageView!;
     
     var viewsToAnimate: [UIView!]!;
     
     var viewsFinalYPosition : [CGFloat]!;
-
-    // MARK:- UIViewController
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // set our custom background image
-        backgroundImage = UIImageView(image: UIImage(named: "welcome_bg"))
-        backgroundImage.contentMode = UIViewContentMode.ScaleAspectFill
-        logInView!.insertSubview(backgroundImage, atIndex: 0)
+        //backgroundImage = UIImageView(image: UIImage(named: "welcome_bg"))
+        //backgroundImage.contentMode = UIViewContentMode.ScaleAspectFill
+        //logInView!.insertSubview(backgroundImage, atIndex: 0)
         
         // remove the parse Logo
-        let logo = UILabel()
+        /*let logo = UILabel()
         logo.text = "Prayr"
         logo.textColor = UIColor.whiteColor()
-        logo.font = UIFont(name: "Helvetica", size: 70)
+        logo.font = UIFont(name: "Pacifico", size: 70)
         logo.shadowColor = UIColor.lightGrayColor()
         logo.shadowOffset = CGSizeMake(2, 2)
-        logInView?.logo = logo
+*/
+        //logInView?.logo = logo
         
         // set forgotten password button to white
-        logInView?.passwordForgottenButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        //logInView?.passwordForgottenButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         
         // make the background of the login button pop more
-        logInView?.logInButton?.setBackgroundImage(nil, forState: .Normal)
-        logInView?.logInButton?.backgroundColor = UIColor(red: 52/255, green: 191/255, blue: 73/255, alpha: 1)
+        //logInView?.logInButton?.setBackgroundImage(nil, forState: .Normal)
+        //logInView?.logInButton?.backgroundColor = UIColor(red: 52/255, green: 191/255, blue: 73/255, alpha: 1)
         
         // make the buttons classier
-        customizeButton(logInView?.facebookButton!)
-        customizeButton(logInView?.twitterButton!)
-        customizeButton(logInView?.signUpButton!)
+        //customizeButton(logInView?.facebookButton!)
+        //customizeButton(logInView?.twitterButton!)
+        //customizeButton(logInView?.signUpButton!)
         
         // create an array of all the views we want to animate in when we launch
         // the screen
-        viewsToAnimate = [self.logInView?.usernameField, self.logInView?.passwordField, self.logInView?.logInButton, self.logInView?.passwordForgottenButton, self.logInView?.facebookButton, self.logInView?.twitterButton, self.logInView?.signUpButton, self.logInView?.logo]
+        //viewsToAnimate = [self.logInView?.usernameField, self.logInView?.passwordField, self.logInView?.logInButton, self.logInView?.passwordForgottenButton, self.logInView?.facebookButton, self.logInView?.twitterButton, self.logInView?.signUpButton, self.logInView?.logo]
         
         // use our custom SignUpViewController
         self.signUpController = SignUpViewController()
-
     }
-
+    
     func customizeButton(button: UIButton!) {
         button.setBackgroundImage(nil, forState: .Normal)
         button.backgroundColor = UIColor.clearColor()
@@ -59,7 +55,7 @@ class LogInViewController : PFLogInViewController {
         button.layer.borderColor = UIColor.whiteColor().CGColor
     }
     
-    func viewDidLayoutSubviews() {
+    override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // stretch background image to fill screen
         backgroundImage.frame = CGRectMake( 0,  0,  logInView!.frame.width,  logInView!.frame.height)
@@ -82,7 +78,7 @@ class LogInViewController : PFLogInViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        self.viewDidAppear(animated)
         
         // Now we'll animate all our views back into view
         // so they are no longer transparent (alpha = 1)
@@ -95,8 +91,12 @@ class LogInViewController : PFLogInViewController {
                     let currentFrame = viewToAnimate.frame
                     viewToAnimate.frame = CGRectMake(currentFrame.origin.x, self.viewsFinalYPosition.removeAtIndex(0), currentFrame.width, currentFrame.height)
                 }
-                }, completion: nil)
+            }, completion: nil)
         }
     }
+    
 }
 
+@objc protocol LoginViewControllerDelegate: NSObjectProtocol {
+    func logInViewControllerDidLogUserIn(logInViewController: LoginViewController)
+}

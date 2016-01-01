@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-ActionButtonApp/AHKActionSheet.framework"
   install_framework "Pods-ActionButtonApp/AMPopTip.framework"
+  install_framework "Pods-ActionButtonApp/AMWaveTransition.framework"
   install_framework "Pods-ActionButtonApp/ActionButton.framework"
   install_framework "Pods-ActionButtonApp/Bolts.framework"
   install_framework "Pods-ActionButtonApp/FBSDKCoreKit.framework"
@@ -103,10 +104,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-ActionButtonApp/SDWebImage.framework"
   install_framework "Pods-ActionButtonApp/Synchronized.framework"
   install_framework "Pods-ActionButtonApp/UIImageAFAdditions.framework"
+  install_framework "Pods-ActionButtonApp/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-ActionButtonApp/AHKActionSheet.framework"
   install_framework "Pods-ActionButtonApp/AMPopTip.framework"
+  install_framework "Pods-ActionButtonApp/AMWaveTransition.framework"
   install_framework "Pods-ActionButtonApp/ActionButton.framework"
   install_framework "Pods-ActionButtonApp/Bolts.framework"
   install_framework "Pods-ActionButtonApp/FBSDKCoreKit.framework"
@@ -124,4 +127,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-ActionButtonApp/SDWebImage.framework"
   install_framework "Pods-ActionButtonApp/Synchronized.framework"
   install_framework "Pods-ActionButtonApp/UIImageAFAdditions.framework"
+  install_framework "Pods-ActionButtonApp/pop.framework"
 fi

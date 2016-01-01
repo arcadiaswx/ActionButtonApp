@@ -90,4 +90,8 @@ extension Palette {
         return UIColor.hexStr("546E7A", alpha: 1)
     }
 
+    class func aTLBlueColor() -> UIColor {
+        return UIColor(red:0.13, green:0.66, blue:0.88, alpha:1)
+        //return UIColor(red:33.0f/255.0f green:170.0f/255.0f blue:225.0f/255.0f alpha:1.0)
+    }
 }

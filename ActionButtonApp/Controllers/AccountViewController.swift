@@ -8,7 +8,7 @@
 //
 
 import UIKit
-import IOStickyHeader
+//import IOStickyHeader
 //import Parse
 import ParseUI
 
@@ -21,11 +21,17 @@ class AccountViewController: UIViewController, UICollectionViewDataSource, UICol
     
     var user: PFUser?
     private var headerView: UIView?
+
+    // MARK:- Initialization
     
-
-
-
-
+    init(user aUser: PFUser) {
+        super.init(style: UITableViewStyle.Plain, className: nil)
+        self.user = aUser
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK:- UIViewController
     
@@ -55,6 +61,16 @@ class AccountViewController: UIViewController, UICollectionViewDataSource, UICol
                 "Item 20",
             ]
         ]
+        if self.user == nil {
+            self.user = PFUser.currentUser()!
+            
+            /*
+            if (try PFUser.currentUser()!.fetchIfNeeded()!) {
+            
+            }
+            */
+            
+        }
         
         self.setupCollectionView()
         

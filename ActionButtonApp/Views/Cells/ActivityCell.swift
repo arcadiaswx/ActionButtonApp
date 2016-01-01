@@ -1,6 +1,5 @@
 import UIKit
 import FormatterKit
-import Parse
 
 // FIXME: redeclaration!!!! var timeFormatter: TTTTimeIntervalFormatter?
 private let nameMaxWidth: CGFloat = 200.0
@@ -120,7 +119,7 @@ class ActivityCell: BaseTextCell {
             self.nameButton!.setTitle(nameString, forState: UIControlState.Highlighted)
             
             // If user is set after the contentText, we reset the content to include padding
-            if self.contentLabel!.text?.characters.count > 0 {
+            if self.contentLabel!.text?.length > 0 {
                 self.setContentText(self.contentLabel!.text!)
             }
             

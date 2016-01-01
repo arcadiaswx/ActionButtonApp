@@ -2,7 +2,6 @@ import UIKit
 import FormatterKit
 import CoreGraphics
 import ParseUI
-import Parse
 
 var timeFormatter: TTTTimeIntervalFormatter?
 

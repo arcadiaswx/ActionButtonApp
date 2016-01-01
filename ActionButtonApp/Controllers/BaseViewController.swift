@@ -13,6 +13,9 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        checkForUser()
+        
         var controllerArray : [UIViewController] = []
         self.navigationItem.title = "ActionButtonApp"
         self.navigationItem.rightBarButtonItem = SettingsButtonItem(target: self, action: Selector("settingsButtonAction:"))
@@ -86,21 +89,33 @@ class BaseViewController: UIViewController {
         actionButton.backgroundColor = UIColor(red: 238.0/255.0, green: 130.0/255.0, blue: 34.0/255.0, alpha:1.0)
         
     }
-    func settingsButtonAction(sender: AnyObject) {
-        
-        //self.navigationController!.pushViewController(AccountViewController(user: PFUser.currentUser()!), animated: true)
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if (PFUser.currentUser() != nil) {
+            ///self.presentLoggedInAlert()
+            print("Logged in with user: ", PFUser.currentUser())
+            //self.dismissViewControllerAnimated(true, completion: nil)
+            
+        }
     }
-    /*
+    func checkForUser() {
+        if (PFUser.currentUser() == nil) {
+            ///self.presentLoggedInAlert()
+            print("Not logged in...", PFUser.currentUser())
+            //self.nav
+            self.dismissViewControllerAnimated(true, completion: nil)
+            //self.navigationController!.pushViewController(AccountViewController,animated: true)
+        }
+        print("Logged in with ....: ", PFUser.currentUser())
+    }
+
     func settingsButtonAction(sender: AnyObject) {
         
-        /*
+        
         let actionController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         
         let myProfileAction = UIAlertAction(title: NSLocalizedString("My Profile", comment: ""), style: UIAlertActionStyle.Default, handler: { _ in
-            self.navigationController!.pushViewController(PAPAccountViewController(user: PFUser.currentUser()!), animated: true)
-        })
-        let findFriendsAction = UIAlertAction(title: NSLocalizedString("Find Friends", comment: ""), style: UIAlertActionStyle.Default, handler: { _ in
-            self.navigationController!.pushViewController(PAPFindFriendsViewController(style: UITableViewStyle.Plain), animated: true)
+            self.navigationController!.pushViewController(AccountViewController(user: PFUser.currentUser()!), animated: true)
         })
         let logOutAction = UIAlertAction(title: NSLocalizedString("Log Out", comment: ""), style: UIAlertActionStyle.Default, handler: { _ in
             // Log out user and present the login view controller
@@ -109,12 +124,11 @@ class BaseViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
         
         actionController.addAction(myProfileAction)
-        actionController.addAction(findFriendsAction)
         actionController.addAction(logOutAction)
         actionController.addAction(cancelAction)
-        */
-        let accountViewController: AccountViewController = AccountViewController()
-        self.presentViewController(accountViewController, animated: true, completion: nil)
+        
+        //let accountViewController: AccountViewController = AccountViewController(user: PFUser.currentUser()!), animated:true)
+        self.presentViewController(actionController, animated: true, completion: nil)
     }
-    */
+    
 }

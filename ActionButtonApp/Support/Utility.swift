@@ -3,8 +3,9 @@ import CoreGraphics
 import UIImageAFAdditions
 import Parse
 //import ParseFacebookUtils
-import FBSDKCoreKit
 import ParseFacebookUtilsV4
+import FBSDKCoreKit
+
 
 
 class Utility {
@@ -19,8 +20,11 @@ class Utility {
     }
     // MARK:- Utility
     
+    
+    
+    
     // MARK Like Photos
-    /*
+    
     class func likePhotoInBackground(photo: PFObject, block completionBlock: ((succeeded: Bool, error: NSError?) -> Void)?) {
         let queryExistingLikes = PFQuery(className: kActivityClassKey)
         queryExistingLikes.whereKey(kActivityPhotoKey, equalTo: photo)
@@ -29,7 +33,7 @@ class Utility {
         queryExistingLikes.cachePolicy = PFCachePolicy.NetworkOnly
         queryExistingLikes.findObjectsInBackgroundWithBlock { (activities, error) in
             if error == nil {
-                for activity in activities! as! [PFObject] {
+                for activity in activities! {
 // FIXME: To be removed! this is synchronous!                    activity.delete()
                     activity.deleteInBackground()
                 }
@@ -44,6 +48,7 @@ class Utility {
             
             let likeACL = PFACL(user: PFUser.currentUser()!)
             likeACL.setPublicReadAccess(true)
+            //likeACL.set
             likeACL.setWriteAccess(true, forUser: photo.objectForKey(kPhotoUserKey) as! PFUser)
             likeActivity.ACL = likeACL
 
@@ -61,7 +66,7 @@ class Utility {
                         
                         var isLikedByCurrentUser = false
                         
-                        for activity in objects! as! [PFObject] {
+                        for activity in objects! {
                             if (activity.objectForKey(kActivityTypeKey) as! String) == kActivityTypeLike && activity.objectForKey(kActivityFromUserKey) != nil {
                                 likers.append(activity.objectForKey(kActivityFromUserKey) as! PFUser)
                             } else if (activity.objectForKey(kActivityTypeKey) as! String) == kActivityTypeComment && activity.objectForKey(kActivityFromUserKey) != nil {
@@ -93,7 +98,7 @@ class Utility {
         queryExistingLikes.cachePolicy = PFCachePolicy.NetworkOnly
         queryExistingLikes.findObjectsInBackgroundWithBlock { (activities, error) in
             if error == nil {
-                for activity in activities! as! [PFObject] {
+                for activity in activities! {
 // FIXME: To be removed! this is synchronous!                    activity.delete()
                     activity.deleteInBackground()
                 }
@@ -112,7 +117,7 @@ class Utility {
                         
                         var isLikedByCurrentUser = false
                         
-                        for activity in objects! as! [PFObject] {
+                        for activity in objects! {
                             if (activity.objectForKey(kActivityTypeKey) as! String) == kActivityTypeLike {
                                 likers.append(activity.objectForKey(kActivityFromUserKey) as! PFUser)
                             } else if (activity.objectForKey(kActivityTypeKey) as! String) == kActivityTypeComment {
@@ -178,19 +183,19 @@ class Utility {
         print("Processed profile picture")
     }
 
-    /*
+
     class func userHasValidFacebookData(user: PFUser) -> Bool {
         // Check that PFUser has valid fbid that matches current FBSessions userId
         let facebookId = user.objectForKey(kUserFacebookIDKey) as? String
         let pfSession = PFFacebookUtils.PFSession.user
         return (facebookId != nil && facebookId!.characters.count > 0 && facebookId == PFFacebookUtils.PFSession()!.accessTokenData.userID)
     }
-   */
+
     class func userHasProfilePictures(user: PFUser) -> Bool {
-        let profilePictureMedium: PFFile? = user.objectForKey(kUserProfilePicMediumKey) as? PFFile
-        let profilePictureSmall: PFFile? = user.objectForKey(kUserProfilePicSmallKey) as? PFFile
-        
-        return profilePictureMedium != nil && profilePictureSmall != nil
+    let profilePictureMedium: PFFile? = user.objectForKey(kUserProfilePicMediumKey) as? PFFile
+    let profilePictureSmall: PFFile? = user.objectForKey(kUserProfilePicSmallKey) as? PFFile
+    
+    return profilePictureMedium != nil && profilePictureSmall != nil
     }
 
     class func defaultProfilePicture() -> UIImage? {
@@ -215,7 +220,7 @@ class Utility {
     }
 
     // MARK User Following
-/*
+
     class func followUserInBackground(user: PFUser, block completionBlock: ((succeeded: Bool, error: NSError?) -> Void)?) {
         if user.objectId == PFUser.currentUser()!.objectId {
             return
@@ -285,7 +290,7 @@ class Utility {
         query.whereKey(kActivityToUserKey, containedIn: users)
         query.whereKey(kActivityTypeKey, equalTo: kActivityTypeFollow)
         query.findObjectsInBackgroundWithBlock { (activities, error) in
-            for activity in activities! as! [PFObject] {
+            for activity in activities! {
                 activity.deleteEventually()
             }
         }
@@ -293,7 +298,7 @@ class Utility {
             Cache.sharedCache.setFollowStatus(false, user: user)
         }
     }
- */
+
     // MARK Activities
 
     class func queryForActivitiesOnPhoto(photo: PFObject, cachePolicy: PFCachePolicy) -> PFQuery {
@@ -374,5 +379,5 @@ class Utility {
         // Save context
         CGContextRestoreGState(context)
     }
-*/
+
 }

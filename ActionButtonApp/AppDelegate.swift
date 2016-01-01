@@ -7,29 +7,65 @@
 //
 
 import UIKit
+import Parse
+import Fabric
+import TwitterKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    //var controller: ViewController!
     var networkStatus: Reachability.NetworkStatus?
-
+    var navController: UINavigationController?
+    
+    //let LayerAppIDString: NSURL! = NSURL(string: "layer:///apps/staging/2fd26bbe-af1f-11e5-8f20-999c060029bf")
+    let ParseAppIDString: String = "oUuHAfy2K9KHPOj12TumNGe7tx2GSbyhCXjHCz8o"
+    let ParseClientKeyString: String = "fJ2fqkZ1lsRqXfRiS2z6EM2A7egK7xQQirnSx77J"
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        // ****************************************************************************
-        // Parse initialization
-        Parse.setApplicationId("oUuHAfy2K9KHPOj12TumNGe7tx2GSbyhCXjHCz8o", clientKey: "fJ2fqkZ1lsRqXfRiS2z6EM2A7egK7xQQirnSx77J")
-        PFFacebookUtils.initializeFacebook()
-        //PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
-        // TODO: V4      PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
-        // ****************************************************************************
+        setupParse()
+        setupAppearance()
+        Settings.registerDefaults()
         
-        //UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
+        // Show View Controller
+        //controller = ViewController()
         
         // Use Reachability to monitor connectivity
         self.monitorReachability()
         
+        let userDefaults = NSUserDefaults.groupUserDefaults()
         
+ 
+        /*
+        self.window!.rootViewController = UINavigationController(rootViewController: controller)
+        self.window!.backgroundColor = UIColor.whiteColor()
+        self.window!.makeKeyAndVisible()
+        */
+        
+        
+        
+        if (!userDefaults.boolForKey(ComplexConstants.General.OnboardingShown.key())) {
+            
+            loadOnboardingInterface()
+            
+        } else if (PFUser.currentUser() != nil) {
+            print("Else, else")
+            loadMainInterface()
+            checkVersion()
+            
+        }
+        
+            /*
+        else {
+            print("Else, else")
+            loadLoginInterface()
+            checkVersion()
+        }
+        */
+        
+       Fabric.with([Twitter.self])
         return true
     }
 
@@ -60,6 +96,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    /**
+     Check the app version and perform required tasks when upgrading
+     */
+    func checkVersion() {
+        let userDefaults = NSUserDefaults.groupUserDefaults()
+        let current = userDefaults.integerForKey("BUNDLE_VERSION")
+        if let versionString = NSBundle.mainBundle().infoDictionary?["CFBundleVersion"] as? String, let version = Int(versionString) {
+            if current < 13 {
+                NotificationHelper.rescheduleNotifications()
+            }
+            userDefaults.setInteger(version, forKey: "BUNDLE_VERSION")
+            userDefaults.synchronize()
+        }
+    }
+    
     func isParseReachable() -> Bool {
         return self.networkStatus != .NotReachable
     }
@@ -84,6 +135,104 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         reachability.startNotifier()
+    }
+    
+    
+    
+    /**
+     Present the onboarding controller if needed
+     */
+    func loadOnboardingInterface() {
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        if let controller = storyboard.instantiateInitialViewController() {
+            self.window?.rootViewController = controller
+        }
+    }
+    
+    /**
+     Present the login controller if needed
+     */
+    func loadLoginInterface() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        if let controller = storyboard.instantiateInitialViewController() {
+            self.window?.rootViewController = controller
+        }
+    }
+    
+    /**
+     Present the main interface
+     */
+    func loadMainInterface() {
+        //realmNotification = watchConnectivityHelper.setupWatchUpdates()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = storyboard.instantiateInitialViewController() {
+            self.window?.rootViewController = controller
+        }
+    }
+
+    /**
+     Sets the main appearance of the app
+     */
+    func setupAppearance() {
+        Globals.actionSheetAppearance()
+        
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        UITabBar.appearance().tintColor = .mainColor()
+        
+        if let font = UIFont(name: "KaushanScript-Regular", size: 22) {
+            UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: font, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        }
+        
+        UINavigationBar.appearance().barTintColor = .mainColor()
+        UINavigationBar.appearance().tintColor = .whiteColor()
+        
+        window?.backgroundColor = .whiteColor()
+    }
+
+    
+    func logOut() {
+        // clear cache
+        Cache.sharedCache.clear()
+        
+        // clear NSUserDefaults
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(kUserDefaultsCacheFacebookFriendsKey)
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(kUserDefaultsActivityFeedViewControllerLastRefreshKey)
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
+        // Unsubscribe from push notifications by removing the user association from the current installation.
+        PFInstallation.currentInstallation().removeObjectForKey(kInstallationUserKey)
+        PFInstallation.currentInstallation().saveInBackground()
+        
+        // Clear all caches
+        PFQuery.clearAllCachedResults()
+        
+        // Log out
+        PFUser.logOut()
+        //FBSession.setActiveSession(nil)
+        // V4???       FBSDKAccessToken.currentAccessToken().tokenString
+        
+        // clear out cached data, view controllers, etc
+        navController!.popToRootViewControllerAnimated(false)
+        
+        loadLoginInterface()
+        
+        //self.homeViewController = nil;
+        //self.activityViewController = nil;
+    }
+    
+    func setupParse() {
+        // Enable Parse local data store for user persistence
+        
+        Parse.enableLocalDatastore()
+        Parse.setApplicationId(ParseAppIDString, clientKey: ParseClientKeyString)
+
+
+        // Set default ACLs
+        let defaultACL: PFACL = PFACL()
+        //defaultACL.setPublicReadAccess(true)
+        //defaultACL.setReadAccess(true, forRoleWithName: Public)
+        PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
     }
 }
 

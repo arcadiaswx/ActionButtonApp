@@ -1,22 +1,14 @@
-//
-//  PhotoCell.swift
-//  MHImageTabBar
-//
-//  Created by teklabsco on 12/16/15.
-//  Copyright © 2015 MHO. All rights reserved.
-//
-
 import UIKit
 import ParseUI
 
 class PhotoCell: PFTableViewCell {
     var photoButton: UIButton?
-    
+
     // MARK:- NSObject
-    
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+     
         // Initialization code
         self.opaque = false
         self.selectionStyle = UITableViewCellSelectionStyle.None
@@ -36,13 +28,13 @@ class PhotoCell: PFTableViewCell {
         
         self.contentView.bringSubviewToFront(self.imageView!)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK:- UIView
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         self.imageView!.frame = CGRectMake(0.0, 0.0, self.bounds.size.width, self.bounds.size.width)

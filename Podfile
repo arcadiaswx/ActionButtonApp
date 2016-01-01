@@ -10,13 +10,12 @@ target 'ActionButtonApp' do
 use_frameworks!
   pod 'Parse'
   pod 'ParseUI'
-  #pod 'Bolts'
-  #pod 'Parse', '~> 1.7.5'
-  #pod 'ParseFacebookUtils', '~> 1.7.5'
   pod 'ParseFacebookUtilsV4'
   pod 'ParseTwitterUtils'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
+  pod 'Fabric'
+  pod 'Crashlytics'
   pod 'TwitterKit'
   pod 'TwitterCore'
 
@@ -29,7 +28,8 @@ use_frameworks!
   pod 'FormatterKit'
   pod 'SDWebImage'
   pod 'RealmSwift'
-    
+  pod 'AMWaveTransition'
+  pod 'pop'
   pod 'UIImageAFAdditions', :git => 'https://github.com/teklabs/UIImageAFAdditions.git'
 
   pod 'Synchronized'

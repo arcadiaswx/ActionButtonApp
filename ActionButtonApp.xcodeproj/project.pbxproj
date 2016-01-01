@@ -51,11 +51,29 @@
 		A6D732F61C32FC3400419BF9 /* PrayerModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D732F51C32FC3400419BF9 /* PrayerModalViewController.swift */; };
 		A6D732F81C3302F900419BF9 /* SettingsButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D732F71C3302F900419BF9 /* SettingsButtonItem.swift */; };
 		A6D732FA1C342BA600419BF9 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D732F91C342BA600419BF9 /* Reachability.swift */; };
-		A6D732FC1C342CE200419BF9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D732FB1C342CE200419BF9 /* WelcomeViewController.swift */; };
-		A6D732FE1C342CEA00419BF9 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D732FD1C342CEA00419BF9 /* LogInViewController.swift */; };
-		A6D733001C34301100419BF9 /* AppIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D732FF1C34301100419BF9 /* AppIntroViewController.swift */; };
 		A6D733021C3431B200419BF9 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6D733011C3431B200419BF9 /* WelcomeViewController.xib */; };
 		A6D733041C343B5900419BF9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D733031C343B5900419BF9 /* Settings.swift */; };
+		A6D733061C343E5100419BF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D733051C343E5100419BF9 /* ViewController.swift */; };
+		A6D7330A1C3494AE00419BF9 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6D733091C3494AE00419BF9 /* Onboarding.storyboard */; };
+		A6D7330C1C3494C600419BF9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6D7330B1C3494C600419BF9 /* Login.storyboard */; };
+		A6D733111C3496EB00419BF9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D733101C3496EB00419BF9 /* OnboardingViewController.swift */; };
+		A6D733161C3496FE00419BF9 /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D733121C3496FE00419BF9 /* GoalViewController.swift */; };
+		A6D733171C3496FE00419BF9 /* PrayrsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D733131C3496FE00419BF9 /* PrayrsViewController.swift */; };
+		A6D733181C3496FE00419BF9 /* MeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D733141C3496FE00419BF9 /* MeasureViewController.swift */; };
+		A6D733191C3496FE00419BF9 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D733151C3496FE00419BF9 /* NotificationViewController.swift */; };
+		A6D7331B1C349D5000419BF9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7331A1C349D5000419BF9 /* WelcomeViewController.swift */; };
+		A6D7331D1C35E57E00419BF9 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7331C1C35E57E00419BF9 /* Cache.swift */; };
+		A6D7331F1C35E9BF00419BF9 /* PrayerTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7331E1C35E9BF00419BF9 /* PrayerTimelineViewController.swift */; };
+		A6D733211C35EA0200419BF9 /* PhotoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D733201C35EA0200419BF9 /* PhotoHeaderView.swift */; };
+		A6D733231C35EA6200419BF9 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D733221C35EA6200419BF9 /* ProfileImageView.swift */; };
+		A6D733251C35EB9000419BF9 /* PrayerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D733241C35EB9000419BF9 /* PrayerDetailsViewController.swift */; };
+		A6D733281C35EC2100419BF9 /* PrayerDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D733261C35EC2100419BF9 /* PrayerDetailsHeaderView.swift */; };
+		A6D733291C35EC2100419BF9 /* PrayerDetailsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D733271C35EC2100419BF9 /* PrayerDetailsFooterView.swift */; };
+		A6D7332F1C36E4CC00419BF9 /* BaseTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7332A1C36E4CB00419BF9 /* BaseTextCell.swift */; };
+		A6D733301C36E4CC00419BF9 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7332B1C36E4CC00419BF9 /* ActivityCell.swift */; };
+		A6D733311C36E4CC00419BF9 /* FindFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7332C1C36E4CC00419BF9 /* FindFriendsCell.swift */; };
+		A6D733321C36E4CC00419BF9 /* LoadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7332D1C36E4CC00419BF9 /* LoadMoreCell.swift */; };
+		A6D733331C36E4CC00419BF9 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7332E1C36E4CC00419BF9 /* PhotoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,7 +84,7 @@
 		A61065C01C271751006F836F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A61065C51C271751006F836F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A61065CB1C27176A006F836F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A61065CD1C271925006F836F /* ActionButtonApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ActionButtonApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		A61065CD1C271925006F836F /* ActionButtonApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ActionButtonApp-Bridging-Header.h"; path = "../ActionButtonApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		A61065DA1C29BB82006F836F /* MainOld.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainOld.storyboard; sourceTree = "<group>"; };
 		A61065DC1C29BBC6006F836F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A61065DE1C29BC61006F836F /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -107,11 +125,29 @@
 		A6D732F51C32FC3400419BF9 /* PrayerModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerModalViewController.swift; sourceTree = "<group>"; };
 		A6D732F71C3302F900419BF9 /* SettingsButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsButtonItem.swift; sourceTree = "<group>"; };
 		A6D732F91C342BA600419BF9 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		A6D732FB1C342CE200419BF9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		A6D732FD1C342CEA00419BF9 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		A6D732FF1C34301100419BF9 /* AppIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIntroViewController.swift; sourceTree = "<group>"; };
 		A6D733011C3431B200419BF9 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		A6D733031C343B5900419BF9 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		A6D733051C343E5100419BF9 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A6D733091C3494AE00419BF9 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		A6D7330B1C3494C600419BF9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		A6D733101C3496EB00419BF9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		A6D733121C3496FE00419BF9 /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
+		A6D733131C3496FE00419BF9 /* PrayrsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayrsViewController.swift; sourceTree = "<group>"; };
+		A6D733141C3496FE00419BF9 /* MeasureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureViewController.swift; sourceTree = "<group>"; };
+		A6D733151C3496FE00419BF9 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		A6D7331A1C349D5000419BF9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		A6D7331C1C35E57E00419BF9 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		A6D7331E1C35E9BF00419BF9 /* PrayerTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerTimelineViewController.swift; sourceTree = "<group>"; };
+		A6D733201C35EA0200419BF9 /* PhotoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoHeaderView.swift; sourceTree = "<group>"; };
+		A6D733221C35EA6200419BF9 /* ProfileImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		A6D733241C35EB9000419BF9 /* PrayerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerDetailsViewController.swift; sourceTree = "<group>"; };
+		A6D733261C35EC2100419BF9 /* PrayerDetailsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerDetailsHeaderView.swift; sourceTree = "<group>"; };
+		A6D733271C35EC2100419BF9 /* PrayerDetailsFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerDetailsFooterView.swift; sourceTree = "<group>"; };
+		A6D7332A1C36E4CB00419BF9 /* BaseTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextCell.swift; sourceTree = "<group>"; };
+		A6D7332B1C36E4CC00419BF9 /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
+		A6D7332C1C36E4CC00419BF9 /* FindFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindFriendsCell.swift; sourceTree = "<group>"; };
+		A6D7332D1C36E4CC00419BF9 /* LoadMoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreCell.swift; sourceTree = "<group>"; };
+		A6D7332E1C36E4CC00419BF9 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		DD3FDCC493C590359A349683 /* Pods-ActionButtonApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionButtonApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionButtonApp/Pods-ActionButtonApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,9 +209,9 @@
 		A61065D61C27192B006F836F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A6D732FF1C34301100419BF9 /* AppIntroViewController.swift */,
-				A6D732FB1C342CE200419BF9 /* WelcomeViewController.swift */,
-				A6D732FD1C342CEA00419BF9 /* LogInViewController.swift */,
+				A6D7330F1C3496D400419BF9 /* Onboarding */,
+				A6D733051C343E5100419BF9 /* ViewController.swift */,
+				A6D7331A1C349D5000419BF9 /* WelcomeViewController.swift */,
 				A61065DC1C29BBC6006F836F /* BaseViewController.swift */,
 				A6CD43C21C29F12700D43160 /* PrayerCollectionViewController.swift */,
 				A61065F71C29C01B006F836F /* AddPrayerViewController.swift */,
@@ -184,6 +220,8 @@
 				A61065DE1C29BC61006F836F /* AccountViewController.swift */,
 				A61065F91C29C11E006F836F /* NotificationsViewController.swift */,
 				A6CD43C61C29F29200D43160 /* NotificationsDetailViewController.swift */,
+				A6D7331E1C35E9BF00419BF9 /* PrayerTimelineViewController.swift */,
+				A6D733241C35EB9000419BF9 /* PrayerDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -192,6 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				A6D732E61C31B9DC00419BF9 /* Main.storyboard */,
+				A6D733091C3494AE00419BF9 /* Onboarding.storyboard */,
+				A6D7330B1C3494C600419BF9 /* Login.storyboard */,
 				A61065E51C29BD65006F836F /* ProfileHeader.xib */,
 				A61065DA1C29BB82006F836F /* MainOld.storyboard */,
 				A61065FB1C29CE85006F836F /* ShotCollectionViewController.xib */,
@@ -204,6 +244,7 @@
 		A61065D81C29BB4B006F836F /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				A6D7331C1C35E57E00419BF9 /* Cache.swift */,
 				A6D733031C343B5900419BF9 /* Settings.swift */,
 				A6CD43C41C29F22700D43160 /* CAPSPageMenu.swift */,
 				A6CD43BC1C29EDA100D43160 /* Utility.swift */,
@@ -225,6 +266,10 @@
 			children = (
 				A6D732F51C32FC3400419BF9 /* PrayerModalViewController.swift */,
 				A6D732F11C32FC0B00419BF9 /* PrayerModalViewController.xib */,
+				A6D733201C35EA0200419BF9 /* PhotoHeaderView.swift */,
+				A6D733261C35EC2100419BF9 /* PrayerDetailsHeaderView.swift */,
+				A6D733271C35EC2100419BF9 /* PrayerDetailsFooterView.swift */,
+				A6D733221C35EA6200419BF9 /* ProfileImageView.swift */,
 				A61065D71C29BB33006F836F /* Storyboards */,
 				A61065E01C29BC88006F836F /* Cells */,
 				A6D733011C3431B200419BF9 /* WelcomeViewController.xib */,
@@ -235,6 +280,11 @@
 		A61065E01C29BC88006F836F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				A6D7332A1C36E4CB00419BF9 /* BaseTextCell.swift */,
+				A6D7332B1C36E4CC00419BF9 /* ActivityCell.swift */,
+				A6D7332C1C36E4CC00419BF9 /* FindFriendsCell.swift */,
+				A6D7332D1C36E4CC00419BF9 /* LoadMoreCell.swift */,
+				A6D7332E1C36E4CC00419BF9 /* PhotoCell.swift */,
 				A6CD43C01C29F05A00D43160 /* PrayerCollectionViewCell.swift */,
 				A6CD43BE1C29F02600D43160 /* PrayerCollectionViewCell.xib */,
 				A610660C1C29D065006F836F /* ImageModalViewController.swift */,
@@ -258,6 +308,18 @@
 			);
 			name = "Data and Model";
 			path = DataAndModel;
+			sourceTree = "<group>";
+		};
+		A6D7330F1C3496D400419BF9 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				A6D733101C3496EB00419BF9 /* OnboardingViewController.swift */,
+				A6D733121C3496FE00419BF9 /* GoalViewController.swift */,
+				A6D733131C3496FE00419BF9 /* PrayrsViewController.swift */,
+				A6D733141C3496FE00419BF9 /* MeasureViewController.swift */,
+				A6D733151C3496FE00419BF9 /* NotificationViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		B60846A48CBCA00327F6F260 /* Frameworks */ = {
@@ -303,6 +365,7 @@
 				TargetAttributes = {
 					A61065B51C271751006F836F = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = V3QESDZJG8;
 					};
 				};
 			};
@@ -331,7 +394,9 @@
 			files = (
 				A6CD43BF1C29F02600D43160 /* PrayerCollectionViewCell.xib in Resources */,
 				A610660F1C29D065006F836F /* ImageModalViewController.xib in Resources */,
+				A6D7330C1C3494C600419BF9 /* Login.storyboard in Resources */,
 				A6D732E71C31B9DC00419BF9 /* Main.storyboard in Resources */,
+				A6D7330A1C3494AE00419BF9 /* Onboarding.storyboard in Resources */,
 				A61065DB1C29BB82006F836F /* MainOld.storyboard in Resources */,
 				A6D732E91C31BC2500419BF9 /* LaunchScreen.storyboard in Resources */,
 				A6D733021C3431B200419BF9 /* WelcomeViewController.xib in Resources */,
@@ -400,39 +465,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				A61065F01C29BE38006F836F /* ComplexConstants.swift in Sources */,
+				A6D7331B1C349D5000419BF9 /* WelcomeViewController.swift in Sources */,
 				A610660E1C29D065006F836F /* ImageModalViewController.swift in Sources */,
 				A6CD43C51C29F22700D43160 /* CAPSPageMenu.swift in Sources */,
+				A6D7331F1C35E9BF00419BF9 /* PrayerTimelineViewController.swift in Sources */,
+				A6D733281C35EC2100419BF9 /* PrayerDetailsHeaderView.swift in Sources */,
 				A6CD43C31C29F12700D43160 /* PrayerCollectionViewController.swift in Sources */,
 				A61065DD1C29BBC6006F836F /* BaseViewController.swift in Sources */,
 				A6D732F81C3302F900419BF9 /* SettingsButtonItem.swift in Sources */,
 				A6D733041C343B5900419BF9 /* Settings.swift in Sources */,
+				A6D733111C3496EB00419BF9 /* OnboardingViewController.swift in Sources */,
 				A61066111C29D0A5006F836F /* HttpService.swift in Sources */,
 				A61065EC1C29BDBB006F836F /* Colors.swift in Sources */,
-				A6D732FC1C342CE200419BF9 /* WelcomeViewController.swift in Sources */,
 				A61065E81C29BD8F006F836F /* SettingsViewController.swift in Sources */,
 				A610660B1C29D03C006F836F /* Shot.swift in Sources */,
 				A6CD43BD1C29EDA100D43160 /* Utility.swift in Sources */,
 				A61065E41C29BD4D006F836F /* ProfileHeader.swift in Sources */,
+				A6D7332F1C36E4CC00419BF9 /* BaseTextCell.swift in Sources */,
 				A6D732F61C32FC3400419BF9 /* PrayerModalViewController.swift in Sources */,
+				A6D733211C35EA0200419BF9 /* PhotoHeaderView.swift in Sources */,
+				A6D733171C3496FE00419BF9 /* PrayrsViewController.swift in Sources */,
 				A61065F41C29BE69006F836F /* NotificationHelper.swift in Sources */,
+				A6D7331D1C35E57E00419BF9 /* Cache.swift in Sources */,
+				A6D733181C3496FE00419BF9 /* MeasureViewController.swift in Sources */,
+				A6D733331C36E4CC00419BF9 /* PhotoCell.swift in Sources */,
 				A61065EE1C29BDCC006F836F /* Constants.swift in Sources */,
 				A61065F21C29BE4E006F836F /* Extensions.swift in Sources */,
+				A6D733321C36E4CC00419BF9 /* LoadMoreCell.swift in Sources */,
 				A6CD43C71C29F29200D43160 /* NotificationsDetailViewController.swift in Sources */,
 				A61066001C29CED2006F836F /* Config.swift in Sources */,
+				A6D733311C36E4CC00419BF9 /* FindFriendsCell.swift in Sources */,
 				A6CD43D91C2C541A00D43160 /* PrayerBase.swift in Sources */,
 				A61065EA1C29BDAF006F836F /* Globals.swift in Sources */,
+				A6D733231C35EA6200419BF9 /* ProfileImageView.swift in Sources */,
 				A61065F81C29C01B006F836F /* AddPrayerViewController.swift in Sources */,
+				A6D733291C35EC2100419BF9 /* PrayerDetailsFooterView.swift in Sources */,
 				A61065DF1C29BC61006F836F /* AccountViewController.swift in Sources */,
 				A610660A1C29D03C006F836F /* DribbbleBase.swift in Sources */,
 				A6CD43D11C29FA4800D43160 /* Prayer.swift in Sources */,
 				A61065BA1C271751006F836F /* AppDelegate.swift in Sources */,
 				A61065E21C29BCB5006F836F /* IOCell.swift in Sources */,
 				A61066071C29D033006F836F /* DribbbleObjectHandler.swift in Sources */,
-				A6D732FE1C342CEA00419BF9 /* LogInViewController.swift in Sources */,
+				A6D733061C343E5100419BF9 /* ViewController.swift in Sources */,
 				A6D732EE1C32F94800419BF9 /* Notification.swift in Sources */,
+				A6D733301C36E4CC00419BF9 /* ActivityCell.swift in Sources */,
 				A6CD43C11C29F05A00D43160 /* PrayerCollectionViewCell.swift in Sources */,
+				A6D733251C35EB9000419BF9 /* PrayerDetailsViewController.swift in Sources */,
 				A61065FA1C29C11E006F836F /* NotificationsViewController.swift in Sources */,
-				A6D733001C34301100419BF9 /* AppIntroViewController.swift in Sources */,
+				A6D733191C3496FE00419BF9 /* NotificationViewController.swift in Sources */,
+				A6D733161C3496FE00419BF9 /* GoalViewController.swift in Sources */,
 				A6D732FA1C342BA600419BF9 /* Reachability.swift in Sources */,
 				A6CD43D31C29FB6E00D43160 /* PrayerObjectHandler.swift in Sources */,
 			);
@@ -529,11 +610,12 @@
 			baseConfigurationReference = 69D17A3AF8478AA67B494222 /* Pods-ActionButtonApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ActionButtonApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teklabsco.ActionButtonApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ActionButtonApp/ActionButtonApp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ActionButtonApp-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -542,11 +624,12 @@
 			baseConfigurationReference = DD3FDCC493C590359A349683 /* Pods-ActionButtonApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ActionButtonApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teklabsco.ActionButtonApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ActionButtonApp/ActionButtonApp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ActionButtonApp-Bridging-Header.h";
 			};
 			name = Release;
 		};

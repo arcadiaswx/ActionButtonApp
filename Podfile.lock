@@ -2,12 +2,15 @@ PODS:
   - ActionButton (0.1.4)
   - AHKActionSheet (0.5.3)
   - AMPopTip (0.10.1)
+  - AMWaveTransition (0.6.2)
   - Bolts (1.5.0):
     - Bolts/AppLinks (= 1.5.0)
     - Bolts/Tasks (= 1.5.0)
   - Bolts/AppLinks (1.5.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.5.0)
+  - Crashlytics (3.4.1):
+    - Fabric (~> 1.6.0)
   - Fabric (1.6.1)
   - FBSDKCoreKit (4.8.0):
     - Bolts (~> 1.1)
@@ -55,6 +58,7 @@ PODS:
     - Bolts/Tasks (~> 1.3)
     - Parse (~> 1.9)
   - PathMenu (1.1.0)
+  - pop (1.0.8)
   - Realm (0.97.0):
     - Realm/Headers (= 0.97.0)
   - Realm/Headers (0.97.0)
@@ -74,7 +78,11 @@ DEPENDENCIES:
   - ActionButton (from `https://github.com/teklabs/ActionButton.git`, branch `master`)
   - AHKActionSheet (~> 0.5)
   - AMPopTip (~> 0.7)
+  - AMWaveTransition
+  - Crashlytics
+  - Fabric
   - FBSDKCoreKit
+  - FBSDKLoginKit
   - FormatterKit
   - IOStickyHeader
   - MBProgressHUD
@@ -83,6 +91,7 @@ DEPENDENCIES:
   - ParseTwitterUtils
   - ParseUI
   - PathMenu (from `https://github.com/teklabs/PathMenu.git`, branch `master`)
+  - pop
   - RealmSwift
   - SDWebImage
   - Synchronized
@@ -115,7 +124,9 @@ SPEC CHECKSUMS:
   ActionButton: 1b94024013cf57e960d09aa56792f29e1bb545e0
   AHKActionSheet: 0b7d3bc6467dd934441fd82beb3911fc1f7bdfd2
   AMPopTip: b0b5d009f3ed47b10f118438a18e0ab5cd03c40d
+  AMWaveTransition: 98952310574779e4ca7e7f4d89f8b1043cdad171
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
+  Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
   Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
   FBSDKCoreKit: 66a935d17b6e00b6b64e604f2eb9b72c9ab7deb8
   FBSDKLoginKit: d893fcbb98d854496925e9ff73c67b896982d3c4
@@ -127,6 +138,7 @@ SPEC CHECKSUMS:
   ParseTwitterUtils: 41e8849e37db471e874c6e515190ded19e043dc8
   ParseUI: c2bcdfbb00330e464b5b773266ae221697a3bb7b
   PathMenu: 3743f569d97645c3eb673a67388d176258d183d5
+  pop: bb773ae2c791ca2629de13b347e7a8b450fa6a57
   Realm: b498a6fb9d288b171ff98d0e2d4384c295be8990
   RealmSwift: d014810dec75c9a3f1a33926d2dabfed855c582c
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84

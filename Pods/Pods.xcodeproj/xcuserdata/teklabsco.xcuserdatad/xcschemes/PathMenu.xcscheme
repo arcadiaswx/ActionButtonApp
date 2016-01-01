@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E9E6656BE93A4659003D451A'
+               BlueprintIdentifier = '8F3D8FF1ACE04DAB02D2EC0C'
                BlueprintName = 'PathMenu'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'PathMenu.framework'>

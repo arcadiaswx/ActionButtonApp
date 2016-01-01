@@ -14,7 +14,7 @@ import UIKit
 let kEmployeeAccounts = ["400680", "403902", "1225726", "4806789", "6409809", "12800553", "121800083", "500011038", "558159381", "723748661"]
 
 let kUserDefaultsActivityFeedViewControllerLastRefreshKey = "com.parse.Anypic.userDefaults.activityFeedViewController.lastRefresh"
-let kUserDefaultsCacheFacebookFriendsKey = "com.parse.Anypic.userDefaults.cache.facebookFriends"
+let kUserDefaultsCacheFacebookFriendsKey = "com.parse.ActionButtonApp.userDefaults.cache.facebookFriends"
 
 // MARK:- Launch URLs
 

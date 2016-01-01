@@ -3,6 +3,7 @@ import AHKActionSheet
 import AMPopTip
 
 class Globals {
+    var window: UIWindow?
     class func numericToolbar(target: AnyObject, selector: Selector, barColor: UIColor = UIColor.whiteColor(), textColor: UIColor = UIColor.mainColor()) -> UIToolbar {
         let numberToolbar = UIToolbar(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 50))
         numberToolbar.barStyle = .BlackTranslucent
@@ -53,6 +54,37 @@ class Globals {
             AMPopTip.appearance().edgeMargin = 5
             let popTip = AMPopTip()
             popTip.showText(text, direction: direction, maxWidth: 200, inView: view, fromFrame: frame)
+        }
+    }
+    
+    /**
+     Present the onboarding controller if needed
+     */
+    func loadOnboardingInterface() {
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        if let controller = storyboard.instantiateInitialViewController() {
+            self.window?.rootViewController = controller
+        }
+    }
+    
+    /**
+     Present the login controller if needed
+     */
+    func loadLoginInterface() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        if let controller = storyboard.instantiateInitialViewController() {
+            self.window?.rootViewController = controller
+        }
+    }
+    
+    /**
+     Present the main interface
+     */
+    func loadMainInterface() {
+        //realmNotification = watchConnectivityHelper.setupWatchUpdates()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = storyboard.instantiateInitialViewController() {
+            self.window?.rootViewController = controller
         }
     }
 }

@@ -29,6 +29,20 @@ public class Settings {
             ComplexConstants.Prayr.Big.key(): userDefaults.doubleForKey(ComplexConstants.Prayr.Big.key())]
     }
     
+    public class func registerDefaultsForLiter() {
+        let userDefaults = NSUserDefaults.groupUserDefaults()
+        userDefaults.setDouble(0.5, forKey: ComplexConstants.Prayr.Big.key())
+        userDefaults.setDouble(0.2, forKey: ComplexConstants.Prayr.Small.key())
+        userDefaults.setDouble(2, forKey: ComplexConstants.Prayr.Goal.key())
+        userDefaults.synchronize()
+    }
     
+    public class func registerDefaultsForOunces() {
+        let userDefaults = NSUserDefaults.groupUserDefaults()
+        userDefaults.setDouble(16, forKey: ComplexConstants.Prayr.Big.key())
+        userDefaults.setDouble(8, forKey: ComplexConstants.Prayr.Small.key())
+        userDefaults.setDouble(64, forKey: ComplexConstants.Prayr.Goal.key())
+        userDefaults.synchronize()
+    }
 
 }
