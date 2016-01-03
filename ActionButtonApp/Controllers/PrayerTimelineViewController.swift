@@ -12,7 +12,7 @@ import Synchronized
 
 class PrayerTimelineViewController: PFQueryTableViewController, PrayerHeaderViewDelegate {
     var shouldReloadOnAppear: Bool = false
-    var reusableSectionHeaderViews: Set<PhotoHeaderView>!
+    var reusableSectionHeaderViews: Set<PrayerHeaderView>!
     var outstandingSectionHeaderQueries: [NSObject:AnyObject]
     
     // MARK:- Initialization
@@ -46,7 +46,7 @@ class PrayerTimelineViewController: PFQueryTableViewController, PrayerHeaderView
         // self.objectsPerPage = 10
         
         // Improve scrolling performance by reusing UITableView section headers
-        self.reusableSectionHeaderViews = Set<PhotoHeaderView>(minimumCapacity: 3)
+        self.reusableSectionHeaderViews = Set<PrayerHeaderView>(minimumCapacity: 3)
         
         // The Loading text clashes with the dark Anypic design
         self.loadingViewEnabled = false
@@ -70,12 +70,12 @@ class PrayerTimelineViewController: PFQueryTableViewController, PrayerHeaderView
         self.tableView.backgroundView = texturedBackgroundView
         
         let defaultNotificationCenter = NSNotificationCenter.defaultCenter()
-        defaultNotificationCenter.addObserver(self, selector: Selector("userDidPublishPhoto:"), name: TabBarControllerDidFinishEditingPhotoNotification, object: nil)
+        defaultNotificationCenter.addObserver(self, selector: Selector("userDidPublishPrayer:"), name: TabBarControllerDidFinishEditingPhotoNotification, object: nil)
         defaultNotificationCenter.addObserver(self, selector: Selector("userFollowingChanged:"), name: UtilityUserFollowingChangedNotification, object: nil)
-        defaultNotificationCenter.addObserver(self, selector: Selector("userDidDeletePhoto:"), name: PhotoDetailsViewControllerUserDeletedPhotoNotification, object: nil)
-        defaultNotificationCenter.addObserver(self, selector: Selector("userDidLikeOrUnlikePhoto:"), name: PhotoDetailsViewControllerUserLikedUnlikedPhotoNotification, object: nil)
-        defaultNotificationCenter.addObserver(self, selector: Selector("userDidLikeOrUnlikePhoto:"), name: UtilityUserLikedUnlikedPhotoCallbackFinishedNotification, object: nil)
-        defaultNotificationCenter.addObserver(self, selector: Selector("userDidCommentOnPhoto:"), name: PhotoDetailsViewControllerUserCommentedOnPhotoNotification, object: nil)
+        defaultNotificationCenter.addObserver(self, selector: Selector("userDidDeletePrayer:"), name: PhotoDetailsViewControllerUserDeletedPhotoNotification, object: nil)
+        defaultNotificationCenter.addObserver(self, selector: Selector("userDidLikeOrUnlikePrayer:"), name: PhotoDetailsViewControllerUserLikedUnlikedPhotoNotification, object: nil)
+        defaultNotificationCenter.addObserver(self, selector: Selector("userDidLikeOrUnlikePrayer:"), name: UtilityUserLikedUnlikedPhotoCallbackFinishedNotification, object: nil)
+        defaultNotificationCenter.addObserver(self, selector: Selector("userDidCommentOnPrayer:"), name: PhotoDetailsViewControllerUserCommentedOnPhotoNotification, object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -226,24 +226,25 @@ class PrayerTimelineViewController: PFQueryTableViewController, PrayerHeaderView
         
         if indexPath.row % 2 == 0 {
             // Header
-            return self.detailPhotoCellForRowAtIndexPath(indexPath)
+            return self.detailPrayerCellForRowAtIndexPath(indexPath)
         } else {
             // Photo
-            var cell: PhotoCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as? PhotoCell
+            var cell: PrayerCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as? PrayerCell
             
             if cell == nil {
-                cell = PhotoCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)
-                cell!.photoButton!.addTarget(self, action: Selector("didTapOnPhotoAction:"), forControlEvents: UIControlEvents.TouchUpInside)
+                cell = PrayerCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)
+                cell!.prayerButton!.addTarget(self, action: Selector("didTapOnPrayerAction:"), forControlEvents: UIControlEvents.TouchUpInside)
             }
             
-            cell!.photoButton!.tag = index
+            cell!.prayerButton!.tag = index
             cell!.imageView!.image = UIImage(named: "PlaceholderPhoto.png")
             
             if object != nil {
-                cell!.imageView!.file = object!.objectForKey(kPhotoPictureKey) as? PFFile
+                cell!.imageView!.file = object!.objectForKey(kPrayerPictureKey) as? PFFile
                 
                 // PFQTVC will take care of asynchronously downloading files, but will only load them when the tableview is not moving. If the data is there, let's load it right away.
-                if cell!.imageView!.file!.isDataAvailable {
+                if cell!.imageView!.file != nil {
+                //if cell!.imageView!.file!.isDataAvailable {
                     cell!.imageView!.loadInBackground()
                 }
             }
@@ -268,8 +269,8 @@ class PrayerTimelineViewController: PFQueryTableViewController, PrayerHeaderView
     
     // MARK:- PrayerTimelineViewController
     
-    func dequeueReusableSectionHeaderView() -> PhotoHeaderView? {
-        for sectionHeaderView: PhotoHeaderView in self.reusableSectionHeaderViews {
+    func dequeueReusableSectionHeaderView() -> PrayerHeaderView? {
+        for sectionHeaderView: PrayerHeaderView in self.reusableSectionHeaderViews {
             if sectionHeaderView.superview == nil {
                 // we found a section header that is no longer visible
                 return sectionHeaderView
@@ -341,15 +342,15 @@ class PrayerTimelineViewController: PFQueryTableViewController, PrayerHeaderView
         }
     }
     
-    func photoHeaderView(photoHeaderView: PhotoHeaderView, didTapCommentOnPhotoButton buton: UIButton, photo: PFObject) {
-        let photoDetailsVC: PhotoDetailsViewController = PhotoDetailsViewController(photo: photo)
-        self.navigationController!.pushViewController(photoDetailsVC, animated: true)
+    func prayerHeaderView(prayerHeaderView: PrayerHeaderView, didTapCommentOnPrayerButton buton: UIButton, prayer: PFObject) {
+        let prayerDetailsVC: PrayerDetailsViewController = PrayerDetailsViewController(prayer: prayer)
+        self.navigationController!.pushViewController(prayerDetailsVC, animated: true)
     }
     
     // MARK:- ()
     
-    func detailPhotoCellForRowAtIndexPath(indexPath: NSIndexPath) -> PFTableViewCell? {
-        let CellIdentifier = "DetailPhotoCell"
+    func detailPrayerCellForRowAtIndexPath(indexPath: NSIndexPath) -> PFTableViewCell? {
+        let CellIdentifier = "DetailPrayerCell"
         
         if self.paginationEnabled && indexPath.row == self.objects!.count * 2 {
             // Load More section
@@ -358,23 +359,23 @@ class PrayerTimelineViewController: PFQueryTableViewController, PrayerHeaderView
         
         let index: Int = self.indexForObjectAtIndexPath(indexPath)
         
-        var headerView: PhotoHeaderView? = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as? PhotoHeaderView
+        var headerView: PrayerHeaderView? = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as? PrayerHeaderView
         if headerView == nil {
-            headerView = PhotoHeaderView(frame: CGRectMake(0.0, 0.0, self.view.bounds.size.width, 44.0), buttons: PhotoHeaderButtons.Default)
+            headerView = PrayerHeaderView(frame: CGRectMake(0.0, 0.0, self.view.bounds.size.width, 44.0), buttons: PrayerHeaderButtons.Default)
             headerView!.delegate = self
             headerView!.selectionStyle = UITableViewCellSelectionStyle.None
         }
         let object: PFObject? = objectAtIndexPath(indexPath)
-        headerView!.photo = object
+        headerView!.prayer = object
         headerView!.tag = index
         headerView!.likeButton!.tag = index
         
-        let attributesForPhoto = Cache.sharedCache.attributesForPhoto(object!)
+        let attributesForPrayer = Cache.sharedCache.attributesForPrayer(object!)
         
-        if attributesForPhoto != nil {
-            headerView!.setLikeStatus(Cache.sharedCache.isPhotoLikedByCurrentUser(object!))
-            headerView!.likeButton!.setTitle(Cache.sharedCache.likeCountForPhoto(object!).description, forState: UIControlState.Normal)
-            headerView!.commentButton!.setTitle(Cache.sharedCache.commentCountForPhoto(object!).description, forState: UIControlState.Normal)
+        if attributesForPrayer != nil {
+            headerView!.setLikeStatus(Cache.sharedCache.isPrayerLikedByCurrentUser(object!))
+            headerView!.likeButton!.setTitle(Cache.sharedCache.likeCountForPrayer(object!).description, forState: UIControlState.Normal)
+            headerView!.commentButton!.setTitle(Cache.sharedCache.commentCountForPrayer(object!).description, forState: UIControlState.Normal)
             
             if headerView!.likeButton!.alpha < 1.0 || headerView!.commentButton!.alpha < 1.0 {
                 UIView.animateWithDuration(0.200, animations: {
@@ -404,7 +405,7 @@ class PrayerTimelineViewController: PFQueryTableViewController, PrayerHeaderView
                             
                             var isLikedByCurrentUser = false
                             
-                            for activity in objects as! [PFObject] {
+                            for activity in objects! {
                                 if (activity.objectForKey(kActivityTypeKey) as! String) == kActivityTypeLike && activity.objectForKey(kActivityFromUserKey) != nil {
                                     likers.append(activity.objectForKey(kActivityFromUserKey) as! PFUser)
                                 } else if (activity.objectForKey(kActivityTypeKey) as! String) == kActivityTypeComment && activity.objectForKey(kActivityFromUserKey) != nil {
@@ -418,15 +419,15 @@ class PrayerTimelineViewController: PFQueryTableViewController, PrayerHeaderView
                                 }
                             }
                             
-                            Cache.sharedCache.setAttributesForPhoto(object!, likers: likers, commenters: commenters, likedByCurrentUser: isLikedByCurrentUser)
+                            Cache.sharedCache.setAttributesForPrayer(object!, likers: likers, commenters: commenters, likedByCurrentUser: isLikedByCurrentUser)
                             
                             if headerView!.tag != index {
                                 return
                             }
                             
-                            headerView!.setLikeStatus(Cache.sharedCache.isPhotoLikedByCurrentUser(object!))
-                            headerView!.likeButton!.setTitle(Cache.sharedCache.likeCountForPhoto(object!).description, forState: UIControlState.Normal)
-                            headerView!.commentButton!.setTitle(Cache.sharedCache.commentCountForPhoto(object!).description, forState: UIControlState.Normal)
+                            headerView!.setLikeStatus(Cache.sharedCache.isPrayerLikedByCurrentUser(object!))
+                            headerView!.likeButton!.setTitle(Cache.sharedCache.likeCountForPrayer(object!).description, forState: UIControlState.Normal)
+                            headerView!.commentButton!.setTitle(Cache.sharedCache.commentCountForPrayer(object!).description, forState: UIControlState.Normal)
                             
                             if headerView!.likeButton!.alpha < 1.0 || headerView!.commentButton!.alpha < 1.0 {
                                 UIView.animateWithDuration(0.200, animations: {
@@ -486,11 +487,11 @@ class PrayerTimelineViewController: PFQueryTableViewController, PrayerHeaderView
     }
     
     
-    func didTapOnPhotoAction(sender: UIButton) {
-        let photo: PFObject? = self.objects![sender.tag] as? PFObject
-        if photo != nil {
-            let photoDetailsVC = PhotoDetailsViewController(photo: photo!)
-            self.navigationController!.pushViewController(photoDetailsVC, animated: true)
+    func didTapOnPrayerAction(sender: UIButton) {
+        let prayer: PFObject? = self.objects![sender.tag] as? PFObject
+        if prayer != nil {
+            let prayerDetailsVC = PrayerDetailsViewController(prayer: prayer!)
+            self.navigationController!.pushViewController(prayerDetailsVC, animated: true)
         }
     }
     

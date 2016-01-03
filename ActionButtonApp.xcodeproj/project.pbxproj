@@ -34,6 +34,8 @@
 		A610660E1C29D065006F836F /* ImageModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A610660C1C29D065006F836F /* ImageModalViewController.swift */; };
 		A610660F1C29D065006F836F /* ImageModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A610660D1C29D065006F836F /* ImageModalViewController.xib */; };
 		A61066111C29D0A5006F836F /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61066101C29D0A5006F836F /* HttpService.swift */; };
+		A6884AD31C39CA5A00DCD2FC /* PrayerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6884AD21C39CA5A00DCD2FC /* PrayerHeaderView.swift */; };
+		A6884AD51C39CC2700DCD2FC /* PrayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6884AD41C39CC2700DCD2FC /* PrayerCell.swift */; };
 		A6CD43BD1C29EDA100D43160 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43BC1C29EDA100D43160 /* Utility.swift */; };
 		A6CD43BF1C29F02600D43160 /* PrayerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6CD43BE1C29F02600D43160 /* PrayerCollectionViewCell.xib */; };
 		A6CD43C11C29F05A00D43160 /* PrayerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD43C01C29F05A00D43160 /* PrayerCollectionViewCell.swift */; };
@@ -74,6 +76,7 @@
 		A6D733311C36E4CC00419BF9 /* FindFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7332C1C36E4CC00419BF9 /* FindFriendsCell.swift */; };
 		A6D733321C36E4CC00419BF9 /* LoadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7332D1C36E4CC00419BF9 /* LoadMoreCell.swift */; };
 		A6D733331C36E4CC00419BF9 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7332E1C36E4CC00419BF9 /* PhotoCell.swift */; };
+		A6D733351C36E62900419BF9 /* ActivityFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D733341C36E62900419BF9 /* ActivityFeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +111,8 @@
 		A610660C1C29D065006F836F /* ImageModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageModalViewController.swift; sourceTree = "<group>"; };
 		A610660D1C29D065006F836F /* ImageModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageModalViewController.xib; sourceTree = "<group>"; };
 		A61066101C29D0A5006F836F /* HttpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpService.swift; sourceTree = "<group>"; };
+		A6884AD21C39CA5A00DCD2FC /* PrayerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerHeaderView.swift; sourceTree = "<group>"; };
+		A6884AD41C39CC2700DCD2FC /* PrayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerCell.swift; sourceTree = "<group>"; };
 		A6CD43BC1C29EDA100D43160 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		A6CD43BE1C29F02600D43160 /* PrayerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrayerCollectionViewCell.xib; sourceTree = "<group>"; };
 		A6CD43C01C29F05A00D43160 /* PrayerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -148,6 +153,7 @@
 		A6D7332C1C36E4CC00419BF9 /* FindFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindFriendsCell.swift; sourceTree = "<group>"; };
 		A6D7332D1C36E4CC00419BF9 /* LoadMoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreCell.swift; sourceTree = "<group>"; };
 		A6D7332E1C36E4CC00419BF9 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		A6D733341C36E62900419BF9 /* ActivityFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityFeedViewController.swift; sourceTree = "<group>"; };
 		DD3FDCC493C590359A349683 /* Pods-ActionButtonApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionButtonApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionButtonApp/Pods-ActionButtonApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,6 +220,7 @@
 				A6D7331A1C349D5000419BF9 /* WelcomeViewController.swift */,
 				A61065DC1C29BBC6006F836F /* BaseViewController.swift */,
 				A6CD43C21C29F12700D43160 /* PrayerCollectionViewController.swift */,
+				A6D733341C36E62900419BF9 /* ActivityFeedViewController.swift */,
 				A61065F71C29C01B006F836F /* AddPrayerViewController.swift */,
 				A61065E71C29BD8F006F836F /* SettingsViewController.swift */,
 				A61065E31C29BD4D006F836F /* ProfileHeader.swift */,
@@ -267,6 +274,7 @@
 				A6D732F51C32FC3400419BF9 /* PrayerModalViewController.swift */,
 				A6D732F11C32FC0B00419BF9 /* PrayerModalViewController.xib */,
 				A6D733201C35EA0200419BF9 /* PhotoHeaderView.swift */,
+				A6884AD21C39CA5A00DCD2FC /* PrayerHeaderView.swift */,
 				A6D733261C35EC2100419BF9 /* PrayerDetailsHeaderView.swift */,
 				A6D733271C35EC2100419BF9 /* PrayerDetailsFooterView.swift */,
 				A6D733221C35EA6200419BF9 /* ProfileImageView.swift */,
@@ -285,6 +293,7 @@
 				A6D7332C1C36E4CC00419BF9 /* FindFriendsCell.swift */,
 				A6D7332D1C36E4CC00419BF9 /* LoadMoreCell.swift */,
 				A6D7332E1C36E4CC00419BF9 /* PhotoCell.swift */,
+				A6884AD41C39CC2700DCD2FC /* PrayerCell.swift */,
 				A6CD43C01C29F05A00D43160 /* PrayerCollectionViewCell.swift */,
 				A6CD43BE1C29F02600D43160 /* PrayerCollectionViewCell.xib */,
 				A610660C1C29D065006F836F /* ImageModalViewController.swift */,
@@ -470,6 +479,7 @@
 				A6CD43C51C29F22700D43160 /* CAPSPageMenu.swift in Sources */,
 				A6D7331F1C35E9BF00419BF9 /* PrayerTimelineViewController.swift in Sources */,
 				A6D733281C35EC2100419BF9 /* PrayerDetailsHeaderView.swift in Sources */,
+				A6884AD31C39CA5A00DCD2FC /* PrayerHeaderView.swift in Sources */,
 				A6CD43C31C29F12700D43160 /* PrayerCollectionViewController.swift in Sources */,
 				A61065DD1C29BBC6006F836F /* BaseViewController.swift in Sources */,
 				A6D732F81C3302F900419BF9 /* SettingsButtonItem.swift in Sources */,
@@ -498,8 +508,10 @@
 				A6CD43D91C2C541A00D43160 /* PrayerBase.swift in Sources */,
 				A61065EA1C29BDAF006F836F /* Globals.swift in Sources */,
 				A6D733231C35EA6200419BF9 /* ProfileImageView.swift in Sources */,
+				A6884AD51C39CC2700DCD2FC /* PrayerCell.swift in Sources */,
 				A61065F81C29C01B006F836F /* AddPrayerViewController.swift in Sources */,
 				A6D733291C35EC2100419BF9 /* PrayerDetailsFooterView.swift in Sources */,
+				A6D733351C36E62900419BF9 /* ActivityFeedViewController.swift in Sources */,
 				A61065DF1C29BC61006F836F /* AccountViewController.swift in Sources */,
 				A610660A1C29D03C006F836F /* DribbbleBase.swift in Sources */,
 				A6CD43D11C29FA4800D43160 /* Prayer.swift in Sources */,

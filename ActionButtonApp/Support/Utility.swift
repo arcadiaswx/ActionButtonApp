@@ -90,6 +90,73 @@ class Utility {
         }
     }
 
+    // MARK Like Prayers
+    
+    class func likePrayerInBackground(prayer: PFObject, block completionBlock: ((succeeded: Bool, error: NSError?) -> Void)?) {
+        let queryExistingLikes = PFQuery(className: kActivityClassKey)
+        queryExistingLikes.whereKey(kActivityPrayerKey, equalTo: prayer)
+        queryExistingLikes.whereKey(kActivityTypeKey, equalTo: kActivityTypeLike)
+        queryExistingLikes.whereKey(kActivityFromUserKey, equalTo: PFUser.currentUser()!)
+        queryExistingLikes.cachePolicy = PFCachePolicy.NetworkOnly
+        queryExistingLikes.findObjectsInBackgroundWithBlock { (activities, error) in
+            if error == nil {
+                for activity in activities! {
+                    // FIXME: To be removed! this is synchronous!                    activity.delete()
+                    activity.deleteInBackground()
+                }
+            }
+            
+            // proceed to creating new like
+            let likeActivity = PFObject(className: kActivityClassKey)
+            likeActivity.setObject(kActivityTypeLike, forKey: kActivityTypeKey)
+            likeActivity.setObject(PFUser.currentUser()!, forKey: kActivityFromUserKey)
+            likeActivity.setObject(prayer.objectForKey(kPrayerUserKey)!, forKey: kActivityToUserKey)
+            likeActivity.setObject(prayer, forKey: kActivityPrayerKey)
+            
+            let likeACL = PFACL(user: PFUser.currentUser()!)
+            likeACL.setPublicReadAccess(true)
+            //likeACL.set
+            likeACL.setWriteAccess(true, forUser: prayer.objectForKey(kPrayerUserKey) as! PFUser)
+            likeActivity.ACL = likeACL
+            
+            likeActivity.saveInBackgroundWithBlock { (succeeded, error) in
+                if completionBlock != nil {
+                    completionBlock!(succeeded: succeeded.boolValue, error: error)
+                }
+                
+                // refresh cache
+                let query = Utility.queryForActivitiesOnPhoto(prayer, cachePolicy: PFCachePolicy.NetworkOnly)
+                query.findObjectsInBackgroundWithBlock { (objects, error) in
+                    if error == nil {
+                        var likers = [PFUser]()
+                        var commenters = [PFUser]()
+                        
+                        var isLikedByCurrentUser = false
+                        
+                        for activity in objects! {
+                            if (activity.objectForKey(kActivityTypeKey) as! String) == kActivityTypeLike && activity.objectForKey(kActivityFromUserKey) != nil {
+                                likers.append(activity.objectForKey(kActivityFromUserKey) as! PFUser)
+                            } else if (activity.objectForKey(kActivityTypeKey) as! String) == kActivityTypeComment && activity.objectForKey(kActivityFromUserKey) != nil {
+                                commenters.append(activity.objectForKey(kActivityFromUserKey) as! PFUser)
+                            }
+                            
+                            if (activity.objectForKey(kActivityFromUserKey) as? PFUser)?.objectId == PFUser.currentUser()!.objectId {
+                                if (activity.objectForKey(kActivityTypeKey) as! String) == kActivityTypeLike {
+                                    isLikedByCurrentUser = true
+                                }
+                            }
+                        }
+                        
+                        Cache.sharedCache.setAttributesForPrayer(prayer, likers: likers, commenters: commenters, likedByCurrentUser: isLikedByCurrentUser)
+                    }
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(UtilityUserLikedUnlikedPrayerCallbackFinishedNotification, object: prayer, userInfo: [PrayerDetailsViewControllerUserLikedUnlikedPrayerNotificationUserInfoLikedKey: succeeded.boolValue])
+                }
+                
+            }
+        }
+    }
+    
     class func unlikePhotoInBackground(photo: PFObject, block completionBlock: ((succeeded: Bool, error: NSError?) -> Void)?) {
         let queryExistingLikes = PFQuery(className: kActivityClassKey)
         queryExistingLikes.whereKey(kActivityPhotoKey, equalTo: photo)
@@ -145,6 +212,62 @@ class Utility {
         }
     }
 
+    
+    class func unlikePrayerInBackground(prayer: PFObject, block completionBlock: ((succeeded: Bool, error: NSError?) -> Void)?) {
+        let queryExistingLikes = PFQuery(className: kActivityClassKey)
+        queryExistingLikes.whereKey(kActivityPrayerKey, equalTo: prayer)
+        queryExistingLikes.whereKey(kActivityTypeKey, equalTo: kActivityTypeLike)
+        queryExistingLikes.whereKey(kActivityFromUserKey, equalTo: PFUser.currentUser()!)
+        queryExistingLikes.cachePolicy = PFCachePolicy.NetworkOnly
+        queryExistingLikes.findObjectsInBackgroundWithBlock { (activities, error) in
+            if error == nil {
+                for activity in activities! {
+                    // FIXME: To be removed! this is synchronous!                    activity.delete()
+                    activity.deleteInBackground()
+                }
+                
+                if completionBlock != nil {
+                    completionBlock!(succeeded: true, error: nil)
+                }
+                
+                // refresh cache
+                let query = Utility.queryForActivitiesOnPrayer(prayer, cachePolicy: PFCachePolicy.NetworkOnly)
+                query.findObjectsInBackgroundWithBlock { (objects, error) in
+                    if error == nil {
+                        
+                        var likers = [PFUser]()
+                        var commenters = [PFUser]()
+                        
+                        var isLikedByCurrentUser = false
+                        
+                        for activity in objects! {
+                            if (activity.objectForKey(kActivityTypeKey) as! String) == kActivityTypeLike {
+                                likers.append(activity.objectForKey(kActivityFromUserKey) as! PFUser)
+                            } else if (activity.objectForKey(kActivityTypeKey) as! String) == kActivityTypeComment {
+                                commenters.append(activity.objectForKey(kActivityFromUserKey) as! PFUser)
+                            }
+                            
+                            if (activity.objectForKey(kActivityFromUserKey) as! PFUser).objectId == PFUser.currentUser()!.objectId {
+                                if (activity.objectForKey(kActivityTypeKey) as! String) == kActivityTypeLike {
+                                    isLikedByCurrentUser = true
+                                }
+                            }
+                        }
+                        
+                        Cache.sharedCache.setAttributesForPrayer(prayer, likers: likers, commenters: commenters, likedByCurrentUser: isLikedByCurrentUser)
+                    }
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(UtilityUserLikedUnlikedPrayerCallbackFinishedNotification, object: prayer, userInfo: [PrayerDetailsViewControllerUserLikedUnlikedPrayerNotificationUserInfoLikedKey: false])
+                }
+                
+            } else {
+                if completionBlock != nil {
+                    completionBlock!(succeeded: false, error: error)
+                }
+            }
+        }
+    }
+    
     // MARK Facebook
 
     class func processFacebookProfilePictureData(newProfilePictureData: NSData) {
@@ -276,7 +399,7 @@ class Utility {
         query.findObjectsInBackgroundWithBlock { (followActivities, error) in
             // While normally there should only be one follow activity returned, we can't guarantee that.
             if error == nil {
-                for followActivity: PFObject in followActivities! as! [PFObject] {
+                for followActivity: PFObject in followActivities! {
                     followActivity.deleteEventually()
                 }
             }
@@ -318,6 +441,23 @@ class Utility {
         return query
     }
 
+    class func queryForActivitiesOnPrayer(prayer: PFObject, cachePolicy: PFCachePolicy) -> PFQuery {
+        let queryLikes: PFQuery = PFQuery(className: kActivityClassKey)
+        queryLikes.whereKey(kActivityPhotoKey, equalTo: prayer)
+        queryLikes.whereKey(kActivityTypeKey, equalTo: kActivityTypeLike)
+        
+        let queryComments = PFQuery(className: kActivityClassKey)
+        queryComments.whereKey(kActivityPrayerKey, equalTo: prayer)
+        queryComments.whereKey(kActivityTypeKey, equalTo: kActivityTypeComment)
+        
+        let query = PFQuery.orQueryWithSubqueries([queryLikes,queryComments])
+        query.cachePolicy = cachePolicy
+        query.includeKey(kActivityFromUserKey)
+        query.includeKey(kActivityPrayerKey)
+        
+        return query
+    }
+    
     // MARK:- Shadow Rendering
 
     class func drawSideAndBottomDropShadowForRect(rect: CGRect, inContext context: CGContextRef) {

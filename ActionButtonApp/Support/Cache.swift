@@ -29,11 +29,28 @@ final class Cache {
         setAttributes(attributes as! [String : AnyObject], forPhoto: photo)
     }
 
+    
+    func setAttributesForPrayer(prayer: PFObject, likers: [PFUser], commenters: [PFUser], likedByCurrentUser: Bool) {
+        let attributes = [
+            kPrayerAttributesIsLikedByCurrentUserKey: likedByCurrentUser,
+            kPrayerAttributesLikeCountKey: likers.count,
+            kPrayerAttributesLikersKey: likers,
+            kPrayerAttributesCommentCountKey: commenters.count,
+            kPrayerAttributesCommentersKey: commenters
+        ]
+        setAttributes(attributes as! [String : AnyObject], forPrayer: prayer)
+    }
+    
     func attributesForPhoto(photo: PFObject) -> [String:AnyObject]? {
         let key: String = self.keyForPhoto(photo)
         return cache.objectForKey(key) as? [String:AnyObject]
     }
 
+    func attributesForPrayer(prayer: PFObject) -> [String:AnyObject]? {
+        let key: String = self.keyForPrayer(prayer)
+        return cache.objectForKey(key) as? [String:AnyObject]
+    }
+    
     func likeCountForPhoto(photo: PFObject) -> Int {
         let attributes: [NSObject:AnyObject]? = self.attributesForPhoto(photo)
         if attributes != nil {
@@ -43,6 +60,15 @@ final class Cache {
         return 0
     }
 
+    func likeCountForPrayer(prayer: PFObject) -> Int {
+        let attributes: [NSObject:AnyObject]? = self.attributesForPrayer(prayer)
+        if attributes != nil {
+            return attributes![kPrayerAttributesLikeCountKey] as! Int
+        }
+        
+        return 0
+    }
+    
     func commentCountForPhoto(photo: PFObject) -> Int {
         let attributes = attributesForPhoto(photo)
         if attributes != nil {
@@ -52,6 +78,15 @@ final class Cache {
         return 0
     }
 
+    func commentCountForPrayer(prayer: PFObject) -> Int {
+        let attributes = attributesForPrayer(prayer)
+        if attributes != nil {
+            return attributes![kPrayerAttributesCommentCountKey] as! Int
+        }
+        
+        return 0
+    }
+    
     func likersForPhoto(photo: PFObject) -> [PFUser] {
         let attributes = attributesForPhoto(photo)
         if attributes != nil {
@@ -61,6 +96,15 @@ final class Cache {
         return [PFUser]()
     }
 
+    func likersForPrayer(prayer: PFObject) -> [PFUser] {
+        let attributes = attributesForPrayer(prayer)
+        if attributes != nil {
+            return attributes![kPrayerAttributesLikersKey] as! [PFUser]
+        }
+        
+        return [PFUser]()
+    }
+    
     func commentersForPhoto(photo: PFObject) -> [PFUser] {
         let attributes = attributesForPhoto(photo)
         if attributes != nil {
@@ -70,12 +114,27 @@ final class Cache {
         return [PFUser]()
     }
 
+    func commentersForPrayer(prayer: PFObject) -> [PFUser] {
+        let attributes = attributesForPrayer(prayer)
+        if attributes != nil {
+            return attributes![kPrayerAttributesCommentersKey] as! [PFUser]
+        }
+        
+        return [PFUser]()
+    }
+    
     func setPhotoIsLikedByCurrentUser(photo: PFObject, liked: Bool) {
         var attributes = attributesForPhoto(photo)
         attributes![kPhotoAttributesIsLikedByCurrentUserKey] = liked
         setAttributes(attributes!, forPhoto: photo)
     }
 
+    func setPrayerIsLikedByCurrentUser(prayer: PFObject, liked: Bool) {
+        var attributes = attributesForPhoto(prayer)
+        attributes![kPrayerAttributesIsLikedByCurrentUserKey] = liked
+        setAttributes(attributes!, forPrayer: prayer)
+    }
+    
     func isPhotoLikedByCurrentUser(photo: PFObject) -> Bool {
         let attributes = attributesForPhoto(photo)
         if attributes != nil {
@@ -85,6 +144,15 @@ final class Cache {
         return false
     }
 
+    func isPrayerLikedByCurrentUser(prayer: PFObject) -> Bool {
+        let attributes = attributesForPhoto(prayer)
+        if attributes != nil {
+            return attributes![kPrayerAttributesIsLikedByCurrentUserKey] as! Bool
+        }
+        
+        return false
+    }
+    
     func incrementLikerCountForPhoto(photo: PFObject) {
         let likerCount = likeCountForPhoto(photo) + 1
         var attributes = attributesForPhoto(photo)
@@ -101,7 +169,24 @@ final class Cache {
         attributes![kPhotoAttributesLikeCountKey] = likerCount
         setAttributes(attributes!, forPhoto: photo)
     }
-
+    
+    func incrementLikerCountForPrayer(prayer: PFObject) {
+        let likerCount = likeCountForPrayer(prayer) + 1
+        var attributes = attributesForPrayer(prayer)
+        attributes![kPrayerAttributesLikeCountKey] = likerCount
+        setAttributes(attributes!, forPhoto: prayer)
+    }
+    
+    func decrementLikerCountForPrayer(prayer: PFObject) {
+        let likerCount = likeCountForPrayer(prayer) - 1
+        if likerCount < 0 {
+            return
+        }
+        var attributes = attributesForPrayer(prayer)
+        attributes![kPrayerAttributesLikeCountKey] = likerCount
+        setAttributes(attributes!, forPrayer: prayer)
+    }
+    
     func incrementCommentCountForPhoto(photo: PFObject) {
         let commentCount = commentCountForPhoto(photo) + 1
         var attributes = attributesForPhoto(photo)
@@ -119,6 +204,23 @@ final class Cache {
         setAttributes(attributes!, forPhoto: photo)
     }
 
+    func incrementCommentCountForPrayer(prayer: PFObject) {
+        let commentCount = commentCountForPrayer(prayer) + 1
+        var attributes = attributesForPrayer(prayer)
+        attributes![kPrayerAttributesCommentCountKey] = commentCount
+        setAttributes(attributes!, forPrayer: prayer)
+    }
+    
+    func decrementCommentCountForPrayer(prayer: PFObject) {
+        let commentCount = commentCountForPhoto(prayer) - 1
+        if commentCount < 0 {
+            return
+        }
+        var attributes = attributesForPrayer(prayer)
+        attributes![kPrayerAttributesCommentCountKey] = commentCount
+        setAttributes(attributes!, forPrayer: prayer)
+    }
+    
     func setAttributesForUser(user: PFUser, photoCount count: Int, followedByCurrentUser following: Bool) {
         let attributes = [
             kUserAttributesPhotoCountKey: count,
@@ -195,6 +297,11 @@ final class Cache {
         cache.setObject(attributes, forKey: key)
     }
 
+    func setAttributes(attributes: [String:AnyObject], forPrayer prayer: PFObject) {
+        let key: String = self.keyForPrayer(prayer)
+        cache.setObject(attributes, forKey: key)
+    }
+    
     func setAttributes(attributes: [String:AnyObject], forUser user: PFUser) {
         let key: String = self.keyForUser(user)
         cache.setObject(attributes, forKey: key)
@@ -204,6 +311,10 @@ final class Cache {
         return "photo_\(photo.objectId)"
     }
 
+    func keyForPrayer(prayer: PFObject) -> String {
+        return "prayer_\(prayer.objectId)"
+    }
+    
     func keyForUser(user: PFUser) -> String {
         return "user_\(user.objectId)"
     }

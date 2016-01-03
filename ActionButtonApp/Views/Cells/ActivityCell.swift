@@ -119,7 +119,7 @@ class ActivityCell: BaseTextCell {
             self.nameButton!.setTitle(nameString, forState: UIControlState.Highlighted)
             
             // If user is set after the contentText, we reset the content to include padding
-            if self.contentLabel!.text?.length > 0 {
+            if self.contentLabel!.text?.characters.count > 0 {
                 self.setContentText(self.contentLabel!.text!)
             }
             

@@ -52,55 +52,55 @@ private let numLikePics: CGFloat = 7.0
 
 class PrayerDetailsHeaderView: UIView {
 
-    /// The user that took the photo
-    private(set) var photographer: PFUser?
+    /// The user that took the prayer
+    private(set) var prayerographer: PFUser?
 
     /// Heart-shaped like button
     private(set) var likeButton: UIButton?
 
     /*! @name Delegate */
-    var delegate: PhotoDetailsHeaderViewDelegate?
+    var delegate: PrayerDetailsHeaderViewDelegate?
     
     // View components
     var nameHeaderView: UIView?
-    var photoImageView: PFImageView?
+    var prayerImageView: PFImageView?
     var likeBarView: UIView?
     var currentLikeAvatars = [ProfileImageView]()
 
     // Redeclare for edit
-// FIXME????    var photographer: PFUser?
+// FIXME????    var prayerographer: PFUser?
 
     // MARK:- NSObject
 
-    init(frame: CGRect, photo aPhoto: PFObject) {
+    init(frame: CGRect, prayer aPrayer: PFObject) {
         super.init(frame: frame)
         // Initialization code
         if timeFormatter == nil {
             timeFormatter = TTTTimeIntervalFormatter()
         }
         
-        self.photo = aPhoto
-        self.photographer = self.photo!.objectForKey(kPhotoUserKey) as? PFUser
+        self.prayer = aPrayer
+        self.prayerographer = self.prayer!.objectForKey(kPrayerUserKey) as? PFUser
         self.likeUsers = nil
         
         self.backgroundColor = UIColor.clearColor()
         self.createView()
     }
 
-    init(frame: CGRect, photo aPhoto: PFObject, photographer aPhotographer: PFUser, likeUsers theLikeUsers: [PFUser]) {
+    init(frame: CGRect, prayer aPrayer: PFObject, prayerographer aPrayerographer: PFUser, likeUsers theLikeUsers: [PFUser]) {
         super.init(frame: frame)
         // Initialization code
         if timeFormatter == nil {
             timeFormatter = TTTTimeIntervalFormatter()
         }
 
-        self.photo = aPhoto
-        self.photographer = aPhotographer
+        self.prayer = aPrayer
+        self.prayerographer = aPrayerographer
         self.likeUsers = theLikeUsers
         
         self.backgroundColor = UIColor.clearColor()
 
-        if self.photo != nil && self.photographer != nil && likeUsers != nil {
+        if self.prayer != nil && self.prayerographer != nil && likeUsers != nil {
             self.createView()
         }
     }
@@ -109,23 +109,23 @@ class PrayerDetailsHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK:- PhotoDetailsHeaderView
+    // MARK:- PrayerDetailsHeaderView
 
     class func rectForView() -> CGRect {
         return CGRectMake(CGFloat(0.0), CGFloat(0.0), UIScreen.mainScreen().bounds.size.width, CGFloat(viewTotalHeight))
     }
     
-    /// The photo displayed in the view
-    var photo: PFObject? {
+    /// The prayer displayed in the view
+    var prayer: PFObject? {
         didSet {
-            if photo != nil && self.photographer != nil && self.likeUsers != nil {
+            if prayer != nil && self.prayerographer != nil && self.likeUsers != nil {
                 self.createView()
                 self.setNeedsDisplay()
             }
         }
     }
 
-    /// Array of the users that liked the photo
+    /// Array of the users that liked the prayer
     var likeUsers: [PFUser]? {
         didSet {
             likeUsers = likeUsers!.sort { (liker1, liker2) in
@@ -188,9 +188,9 @@ class PrayerDetailsHeaderView: UIView {
     }
 
     func reloadLikeBar() {
-        likeUsers = Cache.sharedCache.likersForPhoto(self.photo!)
-        self.setLikeButtonState(Cache.sharedCache.isPhotoLikedByCurrentUser(self.photo!))
-        likeButton!.addTarget(self, action: Selector("didTapLikePhotoButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
+        likeUsers = Cache.sharedCache.likersForPrayer(self.prayer!)
+        self.setLikeButtonState(Cache.sharedCache.isPrayerLikedByCurrentUser(self.prayer!))
+        likeButton!.addTarget(self, action: Selector("didTapLikePrayerButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
     }
 
     // MARK:- ()
@@ -199,19 +199,19 @@ class PrayerDetailsHeaderView: UIView {
         /*
          Create middle section of the header view; the image
          */
-        self.photoImageView = PFImageView(frame: CGRectMake(mainImageX, mainImageY, mainImageWidth, mainImageHeight))
-        self.photoImageView!.image = UIImage(named: "PlaceholderPhoto.png")
-        self.photoImageView!.backgroundColor = UIColor.blackColor()
-        self.photoImageView!.contentMode = UIViewContentMode.ScaleAspectFit
+        self.prayerImageView = PFImageView(frame: CGRectMake(mainImageX, mainImageY, mainImageWidth, mainImageHeight))
+        self.prayerImageView!.image = UIImage(named: "PlaceholderPhoto.png")
+        self.prayerImageView!.backgroundColor = UIColor.blackColor()
+        self.prayerImageView!.contentMode = UIViewContentMode.ScaleAspectFit
         
-        let imageFile: PFFile? = self.photo!.objectForKey(kPhotoPictureKey) as? PFFile
+        let imageFile: PFFile? = self.prayer!.objectForKey(kPrayerPictureKey) as? PFFile
 
         if imageFile != nil {
-            self.photoImageView!.file = imageFile
-            self.photoImageView!.loadInBackground()
+            self.prayerImageView!.file = imageFile
+            self.prayerImageView!.loadInBackground()
         }
         
-        self.addSubview(self.photoImageView!)
+        self.addSubview(self.prayerImageView!)
         
         /*
          Create top of header view with name and avatar
@@ -221,12 +221,12 @@ class PrayerDetailsHeaderView: UIView {
         self.addSubview(self.nameHeaderView!)
         
         // Load data for header
-        self.photographer!.fetchIfNeededInBackgroundWithBlock { (object, error) in
+        self.prayerographer!.fetchIfNeededInBackgroundWithBlock { (object, error) in
             // Create avatar view
             let avatarImageView = ProfileImageView(frame: CGRectMake(avatarImageX, avatarImageY, avatarImageDim, avatarImageDim))
 
-            if Utility.userHasProfilePictures(self.photographer!) {
-                avatarImageView.setFile(self.photographer!.objectForKey(kUserProfilePicSmallKey) as? PFFile)
+            if Utility.userHasProfilePictures(self.prayerographer!) {
+                avatarImageView.setFile(self.prayerographer!.objectForKey(kUserProfilePicSmallKey) as? PFFile)
             } else {
                 avatarImageView.setImage(Utility.defaultProfilePicture()!)
             }
@@ -241,7 +241,7 @@ class PrayerDetailsHeaderView: UIView {
             self.nameHeaderView!.addSubview(avatarImageView)
             
             // Create name label
-            let nameString = self.photographer!.objectForKey(kUserDisplayNameKey) as! String
+            let nameString = self.prayerographer!.objectForKey(kUserDisplayNameKey) as! String
             let userButton = UIButton(type: UIButtonType.Custom)
             self.nameHeaderView!.addSubview(userButton)
             userButton.backgroundColor = UIColor.clearColor()
@@ -266,7 +266,7 @@ class PrayerDetailsHeaderView: UIView {
             userButton.frame = userButtonFrame
             
             // Create time label
-            let timeString: String = timeFormatter!.stringForTimeIntervalFromDate(NSDate(), toDate: self.photo!.createdAt!)
+            let timeString: String = timeFormatter!.stringForTimeIntervalFromDate(NSDate(), toDate: self.prayer!.createdAt!)
             let timeLabelSize: CGSize = timeString.boundingRectWithSize(CGSizeMake(nameLabelMaxWidth, CGFloat.max),
                                                             options: [NSStringDrawingOptions.TruncatesLastVisibleLine, NSStringDrawingOptions.UsesLineFragmentOrigin],
                                                          attributes: [NSFontAttributeName: UIFont.systemFontOfSize(11.0)],
@@ -303,7 +303,7 @@ class PrayerDetailsHeaderView: UIView {
         likeButton!.adjustsImageWhenHighlighted = false
         likeButton!.setBackgroundImage(UIImage(named: "ButtonLike.png"), forState: UIControlState.Normal)
         likeButton!.setBackgroundImage(UIImage(named: "ButtonLikeSelected.png"), forState: UIControlState.Selected)
-        likeButton!.addTarget(self, action: Selector("didTapLikePhotoButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
+        likeButton!.addTarget(self, action: Selector("didTapLikePrayerButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
         likeBarView!.addSubview(likeButton!)
         
         self.reloadLikeBar()
@@ -313,9 +313,9 @@ class PrayerDetailsHeaderView: UIView {
         //[likeBarView addSubview:separator];
     }
 
-    func didTapLikePhotoButtonAction(button: UIButton) {
+    func didTapLikePrayerButtonAction(button: UIButton) {
         let liked: Bool = !button.selected
-        button.removeTarget(self, action: Selector("didTapLikePhotoButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
+        button.removeTarget(self, action: Selector("didTapLikePrayerButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.setLikeButtonState(liked)
 
         let originalLikeUsersArray = likeUsers
@@ -329,56 +329,56 @@ class PrayerDetailsHeaderView: UIView {
         }
         
         if liked {
-            Cache.sharedCache.incrementLikerCountForPhoto(self.photo!)
+            Cache.sharedCache.incrementLikerCountForPrayer(self.prayer!)
             newLikeUsersSet.insert(PFUser.currentUser()!)
         } else {
-            Cache.sharedCache.decrementLikerCountForPhoto(self.photo!)
+            Cache.sharedCache.decrementLikerCountForPrayer(self.prayer!)
         }
         
-        Cache.sharedCache.setPhotoIsLikedByCurrentUser(self.photo!, liked: liked)
+        Cache.sharedCache.setPrayerIsLikedByCurrentUser(self.prayer!, liked: liked)
 
         self.likeUsers = Array(newLikeUsersSet)
 
         if (liked) {
-            Utility.likePhotoInBackground(self.photo!, block: { (succeeded, error) in
+            Utility.likePrayerInBackground(self.prayer!, block: { (succeeded, error) in
                 if !succeeded {
-                    button.addTarget(self, action: Selector("didTapLikePhotoButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
+                    button.addTarget(self, action: Selector("didTapLikePrayerButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
                     self.likeUsers = originalLikeUsersArray
                     self.setLikeButtonState(false)
                 }
             })
         } else {
-            Utility.unlikePhotoInBackground(self.photo!, block: { (succeeded, error) in
+            Utility.unlikePrayerInBackground(self.prayer!, block: { (succeeded, error) in
                 if !succeeded {
-                    button.addTarget(self, action: Selector("didTapLikePhotoButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
+                    button.addTarget(self, action: Selector("didTapLikePrayerButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
                     self.likeUsers = originalLikeUsersArray
                     self.setLikeButtonState(true)
                 }
             })
         }
         
-        NSNotificationCenter.defaultCenter().postNotificationName(PhotoDetailsViewControllerUserLikedUnlikedPhotoNotification, object: self.photo, userInfo: [PhotoDetailsViewControllerUserLikedUnlikedPhotoNotificationUserInfoLikedKey: liked])
+        NSNotificationCenter.defaultCenter().postNotificationName(PrayerDetailsViewControllerUserLikedUnlikedPrayerNotification, object: self.prayer, userInfo: [PrayerDetailsViewControllerUserLikedUnlikedPrayerNotificationUserInfoLikedKey: liked])
     }
 
     func didTapLikerButtonAction(button: UIButton) {
         let user: PFUser = likeUsers![button.tag]
-        if delegate != nil && delegate!.respondsToSelector(Selector("photoDetailsHeaderView:didTapUserButton:user:")) {
-            delegate!.photoDetailsHeaderView(self, didTapUserButton: button, user: user)
+        if delegate != nil && delegate!.respondsToSelector(Selector("prayerDetailsHeaderView:didTapUserButton:user:")) {
+            delegate!.prayerDetailsHeaderView(self, didTapUserButton: button, user: user)
         }    
     }
 
     func didTapUserNameButtonAction(button: UIButton) {
-        if delegate != nil && delegate!.respondsToSelector(Selector("photoDetailsHeaderView:didTapUserButton:user:")) {
-            delegate!.photoDetailsHeaderView(self, didTapUserButton: button, user: self.photographer!)
+        if delegate != nil && delegate!.respondsToSelector(Selector("prayerDetailsHeaderView:didTapUserButton:user:")) {
+            delegate!.prayerDetailsHeaderView(self, didTapUserButton: button, user: self.prayerographer!)
         }    
     }
 }
 
-@objc protocol PhotoDetailsHeaderViewDelegate: NSObjectProtocol {
+@objc protocol PrayerDetailsHeaderViewDelegate: NSObjectProtocol {
     /*!
      Sent to the delegate when the photgrapher's name/avatar is tapped
      @param button the tapped UIButton
-     @param user the PFUser for the photograper
+     @param user the PFUser for the prayergraper
      */
-    func photoDetailsHeaderView(headerView: PhotoDetailsHeaderView, didTapUserButton button: UIButton, user: PFUser)
+    func prayerDetailsHeaderView(headerView: PrayerDetailsHeaderView, didTapUserButton button: UIButton, user: PFUser)
 }

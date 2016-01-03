@@ -5,20 +5,20 @@ import MBProgressHUD
 let kCellInsetWidth: CGFloat = 0.0
 
 class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDelegate, PrayerDetailsHeaderViewDelegate, BaseTextCellDelegate {
-    private(set) var photo: PFObject?
+    private(set) var prayer: PFObject?
     private var likersQueryInProgress: Bool
     
     private var commentTextField: UITextField?
-    private var headerView: PhotoDetailsHeaderView?
+    private var headerView: PrayerDetailsHeaderView?
 
     // MARK:- Initialization
 
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UtilityUserLikedUnlikedPhotoCallbackFinishedNotification, object: self.photo!)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UtilityUserLikedUnlikedPrayerCallbackFinishedNotification, object: self.prayer!)
     }
     
-    init(photo aPhoto: PFObject) {
+    init(prayer aPrayer: PFObject) {
         self.likersQueryInProgress = false
         
         super.init(style: UITableViewStyle.Plain, className: nil)
@@ -35,7 +35,7 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
         // The number of comments to show per page
         self.objectsPerPage = 30
         
-        self.photo = aPhoto
+        self.prayer = aPrayer
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -56,13 +56,13 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
         self.tableView!.backgroundView = texturedBackgroundView
         
         // Set table header
-        self.headerView = PhotoDetailsHeaderView(frame: PhotoDetailsHeaderView.rectForView(), photo:self.photo!)
+        self.headerView = PrayerDetailsHeaderView(frame: PrayerDetailsHeaderView.rectForView(), prayer:self.prayer!)
         self.headerView!.delegate = self
         
         self.tableView.tableHeaderView = self.headerView;
         
         // Set table footer
-        let footerView = PhotoDetailsFooterView(frame: PhotoDetailsFooterView.rectForView())
+        let footerView = PrayerDetailsFooterView(frame: PrayerDetailsFooterView.rectForView())
         commentTextField = footerView.commentField
         commentTextField!.delegate = self
         self.tableView.tableFooterView = footerView
@@ -71,7 +71,7 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
         
         // Register to be notified when the keyboard will be shown to scroll the view
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("userLikedOrUnlikedPhoto:"), name: UtilityUserLikedUnlikedPhotoCallbackFinishedNotification, object: self.photo)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("userLikedOrUnlikedPrayer:"), name: UtilityUserLikedUnlikedPrayerCallbackFinishedNotification, object: self.prayer)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -79,8 +79,8 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
 
         self.headerView!.reloadLikeBar()
         
-        // we will only hit the network if we have no cached data for this photo
-        let hasCachedLikers: Bool = Cache.sharedCache.attributesForPhoto(self.photo!) != nil
+        // we will only hit the network if we have no cached data for this prayer
+        let hasCachedLikers: Bool = Cache.sharedCache.attributesForPrayer(self.prayer!) != nil
         if !hasCachedLikers {
             self.loadLikers()
         }
@@ -116,7 +116,7 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
 
     override func queryForTable() -> PFQuery {
         let query = PFQuery(className: self.parseClassName!)
-        query.whereKey(kActivityPhotoKey, equalTo: self.photo!)
+        query.whereKey(kActivityPrayerKey, equalTo: self.prayer!)
         query.includeKey(kActivityFromUserKey)
         query.whereKey(kActivityTypeKey, equalTo: kActivityTypeComment)
         query.orderByAscending("createdAt")
@@ -178,20 +178,20 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let trimmedComment = textField.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-        if trimmedComment.length != 0 && self.photo!.objectForKey(kPhotoUserKey) != nil {
+        if trimmedComment.characters.count != 0 && self.prayer!.objectForKey(kPrayerUserKey) != nil {
             let comment = PFObject(className: kActivityClassKey)
             comment.setObject(trimmedComment, forKey: kActivityContentKey) // Set comment text
-            comment.setObject(self.photo!.objectForKey(kPhotoUserKey)!, forKey: kActivityToUserKey) // Set toUser
+            comment.setObject(self.prayer!.objectForKey(kPrayerUserKey)!, forKey: kActivityToUserKey) // Set toUser
             comment.setObject(PFUser.currentUser()!, forKey: kActivityFromUserKey) // Set fromUser
             comment.setObject(kActivityTypeComment, forKey:kActivityTypeKey)
-            comment.setObject(self.photo!, forKey: kActivityPhotoKey)
+            comment.setObject(self.prayer!, forKey: kActivityPrayerKey)
             
             let ACL = PFACL(user: PFUser.currentUser()!)
             ACL.setPublicReadAccess(true)
-            ACL.setWriteAccess(true, forUser: self.photo!.objectForKey(kPhotoUserKey) as! PFUser)
+            ACL.setWriteAccess(true, forUser: self.prayer!.objectForKey(kPrayerUserKey) as! PFUser)
             comment.ACL = ACL
 
-            Cache.sharedCache.incrementCommentCountForPhoto(self.photo!)
+            Cache.sharedCache.incrementCommentCountForPrayer(self.prayer!)
             
             // Show HUD view
             MBProgressHUD.showHUDAddedTo(self.view.superview, animated: true)
@@ -203,9 +203,9 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
                 timer.invalidate()
                 
                 if error != nil && error!.code == PFErrorCode.ErrorObjectNotFound.rawValue {
-                    Cache.sharedCache.decrementCommentCountForPhoto(self.photo!)
+                    Cache.sharedCache.decrementCommentCountForPrayer(self.prayer!)
                     
-                    let alertController = UIAlertController(title: NSLocalizedString("Could not post comment", comment: ""), message: NSLocalizedString("This photo is no longer available", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+                    let alertController = UIAlertController(title: NSLocalizedString("Could not post comment", comment: ""), message: NSLocalizedString("This prayer is no longer available", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
                     let alertAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: UIAlertActionStyle.Cancel, handler: nil)
                     alertController.addAction(alertAction)
                     self.presentViewController(alertController, animated: true, completion: nil)
@@ -213,7 +213,7 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
                     self.navigationController!.popViewControllerAnimated(true)
                 }
                 
-                NSNotificationCenter.defaultCenter().postNotificationName(PrayerDetailsViewControllerUserCommentedOnPhotoNotification, object: self.photo!, userInfo: ["comments": self.objects!.count + 1])
+                NSNotificationCenter.defaultCenter().postNotificationName(PrayerDetailsViewControllerUserCommentedOnPrayerNotification, object: self.prayer!, userInfo: ["comments": self.objects!.count + 1])
                 
                 MBProgressHUD.hideHUDForView(self.view.superview, animated: true)
                 self.loadObjects()
@@ -236,9 +236,9 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
         self.shouldPresentAccountViewForUser(aUser)
     }
 
-    // MARK:- PhotoDetailsHeaderViewDelegate
+    // MARK:- PrayerDetailsHeaderViewDelegate
 
-    func photoDetailsHeaderView(headerView: PhotoDetailsHeaderView, didTapUserButton button: UIButton, user: PFUser) {
+    func prayerDetailsHeaderView(headerView: PrayerDetailsHeaderView, didTapUserButton button: UIButton, user: PFUser) {
         self.shouldPresentAccountViewForUser(user)
     }
 
@@ -247,28 +247,28 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
 
     func actionButtonAction(sender: AnyObject) {
         let actionController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        if self.currentUserOwnsPhoto() {
-            let deletePhotoAction = UIAlertAction(title: NSLocalizedString("Delete Photo", comment: ""), style: UIAlertActionStyle.Destructive, handler: { _ in
+        if self.currentUserOwnsPrayer() {
+            let deletePrayerAction = UIAlertAction(title: NSLocalizedString("Delete Prayer", comment: ""), style: UIAlertActionStyle.Destructive, handler: { _ in
                 // prompt to delete
-                self.showConfirmDeletePhotoActionSheet()
+                self.showConfirmDeletePrayerActionSheet()
             })
-            actionController.addAction(deletePhotoAction)
+            actionController.addAction(deletePrayerAction)
         }
-        let sharePhotoAction = UIAlertAction(title: NSLocalizedString("Share Photo", comment: ""), style: UIAlertActionStyle.Default, handler: { _ in
+        let sharePrayerAction = UIAlertAction(title: NSLocalizedString("Share Prayer", comment: ""), style: UIAlertActionStyle.Default, handler: { _ in
             self.activityButtonAction(self)
         })
-        actionController.addAction(sharePhotoAction)
+        actionController.addAction(sharePrayerAction)
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.Cancel, handler: nil)
         actionController.addAction(cancelAction)
         
         presentViewController(actionController, animated: true, completion: nil)
     }
     
-    func showConfirmDeletePhotoActionSheet() {
+    func showConfirmDeletePrayerActionSheet() {
         // prompt to delete
-        let actionController = UIAlertController(title: NSLocalizedString("Are you sure you want to delete this photo?", comment: ""), message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        let deleteAction = UIAlertAction(title: NSLocalizedString("Yes, delete photo", comment: ""), style: UIAlertActionStyle.Destructive, handler: { _ in
-            self.shouldDeletePhoto()
+        let actionController = UIAlertController(title: NSLocalizedString("Are you sure you want to delete this prayer?", comment: ""), message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let deleteAction = UIAlertAction(title: NSLocalizedString("Yes, delete prayer", comment: ""), style: UIAlertActionStyle.Destructive, handler: { _ in
+            self.shouldDeletePrayer()
         })
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.Cancel, handler: nil)
         
@@ -279,11 +279,12 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
     }
 
     func activityButtonAction(sender: AnyObject) {
-        if self.photo!.objectForKey(kPhotoPictureKey)!.isDataAvailable() {
+        if self.prayer!.objectForKey(kPrayerPictureKey) != nil {
+        //if self.prayer!.objectForKey(kPrayerPictureKey)!.isDataAvailable {
             self.showShareSheet()
         } else {
             MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            self.photo!.objectForKey(kPhotoPictureKey)!.getDataInBackgroundWithBlock { (data, error) in
+            self.prayer!.objectForKey(kPrayerPictureKey)!.getDataInBackgroundWithBlock { (data, error) in
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
                 if error == nil {
                     self.showShareSheet()
@@ -293,21 +294,21 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
     }
 
     func showShareSheet() {
-        self.photo!.objectForKey(kPhotoPictureKey)!.getDataInBackgroundWithBlock { (data, error) in
+        self.prayer!.objectForKey(kPrayerPictureKey)!.getDataInBackgroundWithBlock { (data, error) in
             if error == nil {
                 var activityItems = [AnyObject]()
                             
-                // Prefill caption if this is the original poster of the photo, and then only if they added a caption initially.
-                if (PFUser.currentUser()!.objectId == self.photo!.objectForKey(kPhotoUserKey)!.objectId) && self.objects!.count > 0 {
+                // Prefill caption if this is the original poster of the prayer, and then only if they added a caption initially.
+                if (PFUser.currentUser()!.objectId == self.prayer!.objectForKey(kPrayerUserKey)!.objectId) && self.objects!.count > 0 {
                     let firstActivity: PFObject = self.objects![0] as! PFObject
-                    if firstActivity.objectForKey(kActivityFromUserKey)!.objectId == self.photo!.objectForKey(kPhotoUserKey)!.objectId {
+                    if firstActivity.objectForKey(kActivityFromUserKey)!.objectId == self.prayer!.objectForKey(kPrayerUserKey)!.objectId {
                         let commentString = firstActivity.objectForKey(kActivityContentKey)
                         activityItems.append(commentString!)
                     }
                 }
                 
                 activityItems.append(UIImage(data: data!)!)
-                activityItems.append(NSURL(string:  "https://anypic.org/#pic/\(self.photo!.objectId!)")!)
+                activityItems.append(NSURL(string:  "https://anypic.org/#pic/\(self.prayer!.objectId!)")!)
                 
                 let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
                 self.navigationController!.presentViewController(activityViewController, animated: true, completion: nil)
@@ -334,7 +335,7 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
         self.navigationController!.popViewControllerAnimated(true)
     }
 
-    func userLikedOrUnlikedPhoto(note: NSNotification) {
+    func userLikedOrUnlikedPrayer(note: NSNotification) {
         self.headerView!.reloadLikeBar()
     }
 
@@ -351,7 +352,7 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
         }
 
         self.likersQueryInProgress = true
-        let query: PFQuery = Utility.queryForActivitiesOnPhoto(photo!, cachePolicy: PFCachePolicy.NetworkOnly)
+        let query: PFQuery = Utility.queryForActivitiesOnPrayer(prayer!, cachePolicy: PFCachePolicy.NetworkOnly)
         query.findObjectsInBackgroundWithBlock { (objects, error) in
             self.likersQueryInProgress = false
             if error != nil {
@@ -378,19 +379,19 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
                 }
             }
             
-            Cache.sharedCache.setAttributesForPhoto(self.photo!, likers: likers, commenters: commenters, likedByCurrentUser: isLikedByCurrentUser)
+            Cache.sharedCache.setAttributesForPrayer(self.prayer!, likers: likers, commenters: commenters, likedByCurrentUser: isLikedByCurrentUser)
             self.headerView!.reloadLikeBar()
         }
     }
 
-    func currentUserOwnsPhoto() -> Bool {
-        return (self.photo!.objectForKey(kPhotoUserKey) as! PFObject).objectId == PFUser.currentUser()!.objectId
+    func currentUserOwnsPrayer() -> Bool {
+        return (self.prayer!.objectForKey(kPrayerUserKey) as! PFObject).objectId == PFUser.currentUser()!.objectId
     }
 
-    func shouldDeletePhoto() {
-        // Delete all activites related to this photo
+    func shouldDeletePrayer() {
+        // Delete all activites related to this prayer
         let query = PFQuery(className: kActivityClassKey)
-        query.whereKey(kActivityPhotoKey, equalTo: self.photo!)
+        query.whereKey(kActivityPrayerKey, equalTo: self.prayer!)
         query.findObjectsInBackgroundWithBlock { (activities, error) in
             if error == nil {
                 for activity in activities! {
@@ -398,10 +399,10 @@ class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDeleg
                 }
             }
             
-            // Delete photo
-            self.photo!.deleteEventually()
+            // Delete prayer
+            self.prayer!.deleteEventually()
         }
-        NSNotificationCenter.defaultCenter().postNotificationName(PrayerDetailsViewControllerUserDeletedPhotoNotification, object: self.photo!.objectId)
+        NSNotificationCenter.defaultCenter().postNotificationName(PrayerDetailsViewControllerUserDeletedPrayerNotification, object: self.prayer!.objectId)
         self.navigationController!.popViewControllerAnimated(true)
     }
 }
