@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var navController: UINavigationController?
     
     //let LayerAppIDString: NSURL! = NSURL(string: "layer:///apps/staging/2fd26bbe-af1f-11e5-8f20-999c060029bf")
-    let ParseAppIDString: String = "oUuHAfy2K9KHPOj12TumNGe7tx2GSbyhCXjHCz8o"
-    let ParseClientKeyString: String = "fJ2fqkZ1lsRqXfRiS2z6EM2A7egK7xQQirnSx77J"
+    let ParseAppIDString: String = "DzRwlMQmaeHrowPfEBP7lC6qmpkiVoiXJcd7CAS3"
+    let ParseClientKeyString: String = "V8uFn2TPvx0Qkban83wQzsj1hwkRPMTNJ8VSwvLW"
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

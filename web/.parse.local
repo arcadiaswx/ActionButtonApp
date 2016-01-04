@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "ActionButtonApp": {
+      "applicationId": "DzRwlMQmaeHrowPfEBP7lC6qmpkiVoiXJcd7CAS3"
+    },
+    "_default": {
+      "link": "ActionButtonApp"
+    }
+  }
+}
