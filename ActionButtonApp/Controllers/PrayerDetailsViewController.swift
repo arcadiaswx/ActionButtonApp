@@ -5,6 +5,7 @@ import MBProgressHUD
 let kCellInsetWidth: CGFloat = 0.0
 
 class PrayerDetailsViewController : PFQueryTableViewController, UITextFieldDelegate, PrayerDetailsHeaderViewDelegate, BaseTextCellDelegate {
+    
     private(set) var prayer: PFObject?
     private var likersQueryInProgress: Bool
     

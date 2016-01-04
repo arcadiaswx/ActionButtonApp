@@ -2,7 +2,6 @@ import Foundation
 import CoreGraphics
 import UIImageAFAdditions
 import Parse
-//import ParseFacebookUtils
 import ParseFacebookUtilsV4
 import FBSDKCoreKit
 
@@ -114,8 +113,8 @@ class Utility {
             likeActivity.setObject(prayer, forKey: kActivityPrayerKey)
             
             let likeACL = PFACL(user: PFUser.currentUser()!)
+            //[likeACL.setPublicReadAccess(true)];
             likeACL.setPublicReadAccess(true)
-            //likeACL.set
             likeACL.setWriteAccess(true, forUser: prayer.objectForKey(kPrayerUserKey) as! PFUser)
             likeActivity.ACL = likeACL
             
